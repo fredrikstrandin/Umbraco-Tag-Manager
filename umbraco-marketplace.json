@@ -1,0 +1,31 @@
+{
+  "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "AddOnPackagesRequiredForUmbracoCloud": [],
+  "AuthorDetails": {
+    "Name": "ZAAKS!",
+    "Url": "https://www.zaaks.nl/",
+    "ImageUrl": "https://www.zaaks.nl/media/jkdpi1c1/zaaks_umbraco__logo.png",
+    "SyncContributorsFromRepository": false
+  },
+  "Category": "Editor Tools",
+  "Description": "The package provides a tiled overview of all tags used in Umbraco. Each tag shows where it's used and how many times.",
+  "IsSubPackageOf": "",
+  "PackageType": "Package",
+  "PackagesByAuthor": [],
+  "RelatedPackages": [],
+  "LicenseTypes": [ "Free" ],
+  "Tags": [ "umbraco", "plugin", "package", "umbraco-marketplace" ],
+  "Title": "Tag Manager",
+  "VersionSpecificPackageIds": [
+    {
+      "UmbracoMajorVersion": 17,
+      "PackageId": "TagManager"
+    }
+  ],
+  "Screenshots": [
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/ZAAKS/Umbraco-Tag-Manager/main/screenshot/TagManager.png",
+      "Caption": "Umbraco Tag Manager"
+    }
+  ]
+}

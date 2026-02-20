@@ -1,0 +1,242 @@
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.csproj.AssemblyReference.cache
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.GeneratedMSBuildEditorConfig.editorconfig
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.AssemblyInfoInputs.cache
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.AssemblyInfo.cs
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.csproj.CoreCompileInputs.cache
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.sourcelink.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.staticwebassets.runtime.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.staticwebassets.endpoints.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.deps.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.dll
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.pdb
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.xml
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\scopedcss\bundle\TagManager.styles.css
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.build.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.development.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\swae.build.ex.cache
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.TagManager.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.TagManager.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.build.TagManager.props
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.buildMultiTargeting.TagManager.props
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.buildTransitive.TagManager.props
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.pack.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.dll
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\refint\TagManager.dll
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.xml
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.pdb
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\ref\TagManager.dll
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\0ut8cits1i-{0}-znw3wi8dg1-znw3wi8dg1.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\pi31emp5jf-{0}-q8c5cxfyqh-q8c5cxfyqh.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\5oe4qwceol-{0}-ieek6p3ga0-ieek6p3ga0.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\jm3vdpzt1h-{0}-fls3p008yl-fls3p008yl.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\xvlq7bmavn-{0}-aaefoty0bf-aaefoty0bf.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\zvb5snton9-{0}-d8yxlat635-d8yxlat635.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\ib70o0z7ge-{0}-fg090nb9zh-fg090nb9zh.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\imsbamqeyb-{0}-rb8nsfg8u5-rb8nsfg8u5.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\zau8z2jycx-{0}-o0x7wycf9n-o0x7wycf9n.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\tz8ndprmz8-{0}-toh4b62esc-toh4b62esc.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\70awrc8nb8-{0}-gosg4fwadg-gosg4fwadg.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\2s5xaoc270-{0}-ug4yj7jpfd-ug4yj7jpfd.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\p946ng90r2-{0}-h52eyswpc7-h52eyswpc7.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\p8bz8kaki8-{0}-ludaz4xfxx-ludaz4xfxx.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\5fgg9i8ulj-{0}-it4hy7i3xd-it4hy7i3xd.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\s8p31vajeq-{0}-o5ep6z1qdl-o5ep6z1qdl.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\v6un603rjx-{0}-a1rf8cicv6-a1rf8cicv6.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\hp9asjbh9k-{0}-o638tzixb2-o638tzixb2.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\1dqq2qu9q6-{0}-k2jhkc9dwd-k2jhkc9dwd.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\pag8wtxodm-{0}-6osl214bpm-6osl214bpm.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\sr4kj79d2f-{0}-vtlyyoxvct-vtlyyoxvct.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\2b25ro9uer-{0}-as9vtdn3m5-as9vtdn3m5.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\fth3kmcegy-{0}-3mjqxcem69-3mjqxcem69.gz
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\appsettings-schema.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\appsettings-schema.Umbraco.Cms.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\Client\package-lock.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\Client\package.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\Client\public\umbraco-package.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\Client\tsconfig.json
+D:\recover\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\appsettings-schema.json
+D:\recover\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\appsettings-schema.Umbraco.Cms.json
+D:\recover\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\Client\package-lock.json
+D:\recover\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.staticwebassets.endpoints.json
+D:\recover\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\Client\package.json
+D:\recover\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\Client\public\umbraco-package.json
+D:\recover\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\Client\tsconfig.json
+D:\recover\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.staticwebassets.runtime.json
+D:\recover\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.deps.json
+D:\recover\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.dll
+D:\recover\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.pdb
+D:\recover\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.xml
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.csproj.AssemblyReference.cache
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.GeneratedMSBuildEditorConfig.editorconfig
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.AssemblyInfoInputs.cache
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.AssemblyInfo.cs
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.csproj.CoreCompileInputs.cache
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\scopedcss\bundle\TagManager.styles.css
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\0ut8cits1i-{0}-znw3wi8dg1-znw3wi8dg1.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\pi31emp5jf-{0}-q8c5cxfyqh-q8c5cxfyqh.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\5oe4qwceol-{0}-ieek6p3ga0-ieek6p3ga0.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\jm3vdpzt1h-{0}-fls3p008yl-fls3p008yl.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\xvlq7bmavn-{0}-aaefoty0bf-aaefoty0bf.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\zvb5snton9-{0}-d8yxlat635-d8yxlat635.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\ib70o0z7ge-{0}-fg090nb9zh-fg090nb9zh.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\imsbamqeyb-{0}-rb8nsfg8u5-rb8nsfg8u5.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\zau8z2jycx-{0}-o0x7wycf9n-o0x7wycf9n.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\tz8ndprmz8-{0}-toh4b62esc-toh4b62esc.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\70awrc8nb8-{0}-gosg4fwadg-gosg4fwadg.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\2s5xaoc270-{0}-ug4yj7jpfd-ug4yj7jpfd.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\p946ng90r2-{0}-h52eyswpc7-h52eyswpc7.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\p8bz8kaki8-{0}-ludaz4xfxx-ludaz4xfxx.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\5fgg9i8ulj-{0}-it4hy7i3xd-it4hy7i3xd.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\s8p31vajeq-{0}-o5ep6z1qdl-o5ep6z1qdl.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\v6un603rjx-{0}-a1rf8cicv6-a1rf8cicv6.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\hp9asjbh9k-{0}-o638tzixb2-o638tzixb2.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\1dqq2qu9q6-{0}-k2jhkc9dwd-k2jhkc9dwd.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\pag8wtxodm-{0}-6osl214bpm-6osl214bpm.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\sr4kj79d2f-{0}-vtlyyoxvct-vtlyyoxvct.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\2b25ro9uer-{0}-as9vtdn3m5-as9vtdn3m5.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\fth3kmcegy-{0}-3mjqxcem69-3mjqxcem69.gz
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.build.json
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.development.json
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\swae.build.ex.cache
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.TagManager.Microsoft.AspNetCore.StaticWebAssets.props
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.TagManager.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.build.TagManager.props
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.buildMultiTargeting.TagManager.props
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.buildTransitive.TagManager.props
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.pack.json
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.dll
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\refint\TagManager.dll
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.xml
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.pdb
+D:\recover\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\ref\TagManager.dll
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\appsettings-schema.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\appsettings-schema.Umbraco.Cms.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\Client\package-lock.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\Client\package.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\Client\public\umbraco-package.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\Client\tsconfig.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.staticwebassets.runtime.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.staticwebassets.endpoints.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.deps.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.dll
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.pdb
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\bin\Debug\net10.0\TagManager.xml
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.csproj.AssemblyReference.cache
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.GeneratedMSBuildEditorConfig.editorconfig
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.AssemblyInfoInputs.cache
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.AssemblyInfo.cs
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.csproj.CoreCompileInputs.cache
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.sourcelink.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\scopedcss\bundle\TagManager.styles.css
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\dm2liskl8o-{0}-9l6zvnk5ps-9l6zvnk5ps.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\gd0b94xeab-{0}-aysz9xnsgn-aysz9xnsgn.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\jhhlbqpcxl-{0}-rrhq5bpxna-rrhq5bpxna.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\upicyjdnao-{0}-je9wtva3bj-je9wtva3bj.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\pc767nkkzs-{0}-v8avupz6m1-v8avupz6m1.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\neakm3cjtp-{0}-shmmz3qlwm-shmmz3qlwm.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\pf9onzmq3e-{0}-v8v13t4346-v8v13t4346.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\z3drlwbd1o-{0}-mt59twu7sq-mt59twu7sq.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\cjwpcedr1a-{0}-o0x7wycf9n-o0x7wycf9n.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\dk95vqagvc-{0}-0hsoqq5pvb-0hsoqq5pvb.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\z35zh5xyot-{0}-j53enucpc8-j53enucpc8.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\tiqdpy0wcj-{0}-3d2o1az7x4-3d2o1az7x4.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\x31m6a5pwr-{0}-ygfmpfn3vi-ygfmpfn3vi.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\vx41jz6ei1-{0}-k4j9m4w5xa-k4j9m4w5xa.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\hovj04fdyw-{0}-h6wmhxln2h-h6wmhxln2h.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\e88i3su7ae-{0}-5x41wmr5ey-5x41wmr5ey.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\7sgitppaqk-{0}-kpn7zss93r-kpn7zss93r.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\roxtqeg7pz-{0}-as9vtdn3m5-as9vtdn3m5.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\compressed\nge18k0zwj-{0}-cdbk6sry1w-cdbk6sry1w.gz
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.build.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.development.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\swae.build.ex.cache
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.TagManager.Microsoft.AspNetCore.StaticWebAssets.props
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.TagManager.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.build.TagManager.props
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.buildMultiTargeting.TagManager.props
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.buildTransitive.TagManager.props
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.pack.json
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.dll
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\refint\TagManager.dll
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.xml
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\TagManager.pdb
+D:\popup and tag final packages\Pop-up20marketing20package\TagManager\obj\Debug\net10.0\ref\TagManager.dll
+D:\Tagmanager\TagManager\bin\Debug\net10.0\appsettings-schema.json
+D:\Tagmanager\TagManager\bin\Debug\net10.0\appsettings-schema.Umbraco.Cms.json
+D:\Tagmanager\TagManager\bin\Debug\net10.0\Client\package-lock.json
+D:\Tagmanager\TagManager\bin\Debug\net10.0\Client\package.json
+D:\Tagmanager\TagManager\bin\Debug\net10.0\Client\public\umbraco-package.json
+D:\Tagmanager\TagManager\bin\Debug\net10.0\Client\tsconfig.json
+D:\Tagmanager\TagManager\bin\Debug\net10.0\TagManager.staticwebassets.runtime.json
+D:\Tagmanager\TagManager\bin\Debug\net10.0\TagManager.staticwebassets.endpoints.json
+D:\Tagmanager\TagManager\bin\Debug\net10.0\TagManager.deps.json
+D:\Tagmanager\TagManager\bin\Debug\net10.0\TagManager.dll
+D:\Tagmanager\TagManager\bin\Debug\net10.0\TagManager.pdb
+D:\Tagmanager\TagManager\bin\Debug\net10.0\TagManager.xml
+D:\Tagmanager\TagManager\obj\Debug\net10.0\TagManager.csproj.AssemblyReference.cache
+D:\Tagmanager\TagManager\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\Tagmanager\TagManager\obj\Debug\net10.0\TagManager.GeneratedMSBuildEditorConfig.editorconfig
+D:\Tagmanager\TagManager\obj\Debug\net10.0\TagManager.AssemblyInfoInputs.cache
+D:\Tagmanager\TagManager\obj\Debug\net10.0\TagManager.AssemblyInfo.cs
+D:\Tagmanager\TagManager\obj\Debug\net10.0\TagManager.csproj.CoreCompileInputs.cache
+D:\Tagmanager\TagManager\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\Tagmanager\TagManager\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\Tagmanager\TagManager\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\Tagmanager\TagManager\obj\Debug\net10.0\scopedcss\bundle\TagManager.styles.css
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\zau8z2jycx-{0}-o0x7wycf9n-o0x7wycf9n.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\tz8ndprmz8-{0}-nvdo0lci5d-nvdo0lci5d.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\2b25ro9uer-{0}-as9vtdn3m5-as9vtdn3m5.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\fth3kmcegy-{0}-cdbk6sry1w-cdbk6sry1w.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets.build.json
+D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets.development.json
+D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\Tagmanager\TagManager\obj\Debug\net10.0\swae.build.ex.cache
+D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.TagManager.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.TagManager.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.build.TagManager.props
+D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.buildMultiTargeting.TagManager.props
+D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.buildTransitive.TagManager.props
+D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets.pack.json
+D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+D:\Tagmanager\TagManager\obj\Debug\net10.0\TagManager.dll
+D:\Tagmanager\TagManager\obj\Debug\net10.0\refint\TagManager.dll
+D:\Tagmanager\TagManager\obj\Debug\net10.0\TagManager.xml
+D:\Tagmanager\TagManager\obj\Debug\net10.0\TagManager.pdb
+D:\Tagmanager\TagManager\obj\Debug\net10.0\ref\TagManager.dll
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\vuxj4e47av-{0}-qls2dd2yzn-qls2dd2yzn.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\ovzpz6ruma-{0}-0hixul2thv-0hixul2thv.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\1h15uwq0df-{0}-9flcsws065-9flcsws065.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\9qo3ncgvoo-{0}-99r0x2eqt8-99r0x2eqt8.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\dxoeg6918e-{0}-45js4vszmm-45js4vszmm.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\nc79h7kl0z-{0}-j4ucm1f374-j4ucm1f374.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\csqjbcm7mo-{0}-b3kfys13o3-b3kfys13o3.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\fpr51qtvim-{0}-xvkhapc2wu-xvkhapc2wu.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\kbjhpjclh3-{0}-sa97zgzovr-sa97zgzovr.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\1mn8sy2cu4-{0}-ivqi3z6hcd-ivqi3z6hcd.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\41yxy8y5ac-{0}-qmuvvoezfg-qmuvvoezfg.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\n22z9fktwb-{0}-cd4jr8a8w6-cd4jr8a8w6.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\9gl9yvpsix-{0}-qn6q5phiec-qn6q5phiec.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\f1the5etru-{0}-h64yr1m1o2-h64yr1m1o2.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\sr4kj79d2f-{0}-fv5t1c0ajb-fv5t1c0ajb.gz

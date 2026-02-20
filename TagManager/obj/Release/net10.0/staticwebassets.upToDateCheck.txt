@@ -1,0 +1,46 @@
+wwwroot\App_Plugins\TagManager\umbraco-package.json
+wwwroot\App_Plugins\TagManager\tagmanager.js.map
+wwwroot\App_Plugins\TagManager\tagmanager.js
+wwwroot\App_Plugins\TagManager\tagmanager-tree.repository-B82eWduq.js.map
+wwwroot\App_Plugins\TagManager\tagmanager-tree.repository-B82eWduq.js
+wwwroot\App_Plugins\TagManager\tagmanager-repository-Dhwzm5P2.js.map
+wwwroot\App_Plugins\TagManager\tagmanager-repository-Dhwzm5P2.js
+wwwroot\App_Plugins\TagManager\tagmanager-repository-BtcZTuQa.js.map
+wwwroot\App_Plugins\TagManager\tagmanager-repository-BtcZTuQa.js
+wwwroot\App_Plugins\TagManager\tagmanager-dashboard.element-D_IXs07l.js.map
+wwwroot\App_Plugins\TagManager\tagmanager-dashboard.element-D_IXs07l.js
+wwwroot\App_Plugins\TagManager\tag-workspace.element-DomOa9Ug.js.map
+wwwroot\App_Plugins\TagManager\tag-workspace.element-DomOa9Ug.js
+wwwroot\App_Plugins\TagManager\tag-workspace.element-B-1W5B64.js.map
+wwwroot\App_Plugins\TagManager\tag-workspace.element-B-1W5B64.js
+wwwroot\App_Plugins\TagManager\tag-group-workspace.element-D6EpZdJB.js.map
+wwwroot\App_Plugins\TagManager\tag-group-workspace.element-D6EpZdJB.js
+wwwroot\App_Plugins\TagManager\tag-edit-view.element-DgFA6--M.js.map
+wwwroot\App_Plugins\TagManager\tag-edit-view.element-DgFA6--M.js
+wwwroot\App_Plugins\TagManager\tag-edit-view.element-C65K2W5E.js.map
+wwwroot\App_Plugins\TagManager\tag-edit-view.element-C65K2W5E.js
+wwwroot\App_Plugins\TagManager\index-BPuvov7F.js.map
+wwwroot\App_Plugins\TagManager\index-BPuvov7F.js
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\umbraco-package.json
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tagmanager.js.map
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tagmanager.js
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tagmanager-tree.repository-B82eWduq.js.map
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tagmanager-tree.repository-B82eWduq.js
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tagmanager-repository-Dhwzm5P2.js.map
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tagmanager-repository-Dhwzm5P2.js
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tagmanager-repository-BtcZTuQa.js.map
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tagmanager-repository-BtcZTuQa.js
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tagmanager-dashboard.element-D_IXs07l.js.map
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tagmanager-dashboard.element-D_IXs07l.js
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tag-workspace.element-DomOa9Ug.js.map
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tag-workspace.element-DomOa9Ug.js
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tag-workspace.element-B-1W5B64.js.map
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tag-workspace.element-B-1W5B64.js
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tag-group-workspace.element-D6EpZdJB.js.map
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tag-group-workspace.element-D6EpZdJB.js
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tag-edit-view.element-DgFA6--M.js.map
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tag-edit-view.element-DgFA6--M.js
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tag-edit-view.element-C65K2W5E.js.map
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\tag-edit-view.element-C65K2W5E.js
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\index-BPuvov7F.js.map
+D:\Secuirty patch upgrades\Pop-up20marketing20package\TagManager\wwwroot\App_Plugins\TagManager\index-BPuvov7F.js
