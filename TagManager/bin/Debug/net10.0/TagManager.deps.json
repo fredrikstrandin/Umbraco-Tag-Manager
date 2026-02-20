@@ -6,18 +6,21 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v10.0": {
-      "TagManager/17.0.0": {
+      "TagManager/17.0.0-beta.1": {
         "dependencies": {
-          "Umbraco.Cms.Api.Common": "17.1.0",
+          "Umbraco.Cms.Api.Common": "17.2.0",
           "Umbraco.Cms.Api.Management": "17.0.0",
-          "Umbraco.Cms.Web.Common": "17.1.0",
-          "Umbraco.Cms.Web.Website": "17.1.0"
+          "Umbraco.Cms.Web.Common": "17.2.0",
+          "Umbraco.Cms.Web.Website": "17.2.0"
         },
         "runtime": {
           "TagManager.dll": {}
         }
       },
       "Asp.Versioning.Abstractions/8.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "10.0.2"
+        },
         "runtime": {
           "lib/net8.0/Asp.Versioning.Abstractions.dll": {
             "assemblyVersion": "8.1.0.0",
@@ -25,36 +28,36 @@
           }
         }
       },
-      "Asp.Versioning.Http/8.1.0": {
+      "Asp.Versioning.Http/8.1.1": {
         "dependencies": {
           "Asp.Versioning.Abstractions": "8.1.0"
         },
         "runtime": {
           "lib/net8.0/Asp.Versioning.Http.dll": {
             "assemblyVersion": "8.1.0.0",
-            "fileVersion": "8.1.8851.31627"
+            "fileVersion": "8.1.9492.33616"
           }
         }
       },
-      "Asp.Versioning.Mvc/8.1.0": {
+      "Asp.Versioning.Mvc/8.1.1": {
         "dependencies": {
-          "Asp.Versioning.Http": "8.1.0"
+          "Asp.Versioning.Http": "8.1.1"
         },
         "runtime": {
           "lib/net8.0/Asp.Versioning.Mvc.dll": {
             "assemblyVersion": "8.1.0.0",
-            "fileVersion": "8.1.8851.31627"
+            "fileVersion": "8.1.9492.33616"
           }
         }
       },
-      "Asp.Versioning.Mvc.ApiExplorer/8.1.0": {
+      "Asp.Versioning.Mvc.ApiExplorer/8.1.1": {
         "dependencies": {
-          "Asp.Versioning.Mvc": "8.1.0"
+          "Asp.Versioning.Mvc": "8.1.1"
         },
         "runtime": {
           "lib/net8.0/Asp.Versioning.Mvc.ApiExplorer.dll": {
             "assemblyVersion": "8.1.0.0",
-            "fileVersion": "8.1.8851.31636"
+            "fileVersion": "8.1.9492.33632"
           }
         }
       },
@@ -68,7 +71,8 @@
       },
       "Dazinator.Extensions.FileProviders/2.0.0": {
         "dependencies": {
-          "DotNet.Glob": "3.1.0"
+          "DotNet.Glob": "3.1.0",
+          "Microsoft.Extensions.FileProviders.Abstractions": "10.0.2"
         },
         "runtime": {
           "lib/netstandard1.3/Dazinator.Extensions.FileProviders.dll": {
@@ -88,7 +92,8 @@
       "Examine/3.7.1": {
         "dependencies": {
           "Examine.Core": "3.7.1",
-          "Examine.Lucene": "3.7.1"
+          "Examine.Lucene": "3.7.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2"
         },
         "runtime": {
           "lib/net8.0/Examine.dll": {
@@ -98,6 +103,10 @@
         }
       },
       "Examine.Core/3.7.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2"
+        },
         "runtime": {
           "lib/net8.0/Examine.Core.dll": {
             "assemblyVersion": "3.7.1.0",
@@ -183,7 +192,8 @@
       },
       "Lucene.Net/4.8.0-beta00017": {
         "dependencies": {
-          "J2N": "2.1.0"
+          "J2N": "2.1.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.2"
         },
         "runtime": {
           "lib/net8.0/Lucene.Net.dll": {
@@ -298,6 +308,14 @@
           }
         }
       },
+      "Markdig/0.44.0": {
+        "runtime": {
+          "lib/net9.0/Markdig.dll": {
+            "assemblyVersion": "0.44.0.0",
+            "fileVersion": "0.44.0.0"
+          }
+        }
+      },
       "Markdown/2.2.1": {
         "runtime": {
           "lib/netstandard1.3/Markdown.dll": {
@@ -326,7 +344,31 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Cryptography.Internal/10.0.2": {
+        "runtime": {
+          "lib/net10.0/Microsoft.AspNetCore.Cryptography.Internal.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Cryptography.KeyDerivation/10.0.2": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.Internal": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
       "Microsoft.Extensions.AmbientMetadata.Application/10.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.2",
+          "Microsoft.Extensions.Hosting.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "10.0.2"
+        },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.AmbientMetadata.Application.dll": {
             "assemblyVersion": "10.0.0.0",
@@ -334,15 +376,50 @@
           }
         }
       },
-      "Microsoft.Extensions.Caching.Hybrid/10.0.0": {
+      "Microsoft.Extensions.Caching.Abstractions/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Caching.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Caching.Hybrid/10.2.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Caching.Memory": "10.0.2",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2"
+        },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Caching.Hybrid.dll": {
+            "assemblyVersion": "10.2.0.0",
+            "fileVersion": "10.200.26.6302"
+          }
+        }
+      },
+      "Microsoft.Extensions.Caching.Memory/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2",
+          "Microsoft.Extensions.Primitives": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Caching.Memory.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.25.55903"
+            "fileVersion": "10.0.225.61305"
           }
         }
       },
       "Microsoft.Extensions.Compliance.Abstractions/10.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2"
+        },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Compliance.Abstractions.dll": {
             "assemblyVersion": "10.0.0.0",
@@ -350,7 +427,93 @@
           }
         }
       },
+      "Microsoft.Extensions.Configuration/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Primitives": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Configuration.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Abstractions/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Binder/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.2",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Configuration.Binder.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.FileExtensions/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.2",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Abstractions": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Physical": "10.0.2",
+          "Microsoft.Extensions.Primitives": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Configuration.FileExtensions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Json/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.2",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Configuration.FileExtensions": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Abstractions": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Configuration.Json.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.2": {
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
       "Microsoft.Extensions.DependencyInjection.AutoActivation/10.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Hosting.Abstractions": "10.0.2"
+        },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.DependencyInjection.AutoActivation.dll": {
             "assemblyVersion": "10.0.0.0",
@@ -366,7 +529,35 @@
           }
         }
       },
+      "Microsoft.Extensions.Diagnostics/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.2",
+          "Microsoft.Extensions.Diagnostics.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Diagnostics.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.Abstractions/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Diagnostics.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
       "Microsoft.Extensions.Diagnostics.ExceptionSummarization/10.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2"
+        },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Diagnostics.ExceptionSummarization.dll": {
             "assemblyVersion": "10.0.0.0",
@@ -374,8 +565,83 @@
           }
         }
       },
+      "Microsoft.Extensions.FileProviders.Abstractions/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Embedded/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Abstractions": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.FileProviders.Embedded.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Physical/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Abstractions": "10.0.2",
+          "Microsoft.Extensions.FileSystemGlobbing": "10.0.2",
+          "Microsoft.Extensions.Primitives": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.FileProviders.Physical.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/10.0.2": {
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.FileSystemGlobbing.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Hosting.Abstractions/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Diagnostics.Abstractions": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Hosting.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Http/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Diagnostics": "10.0.2",
+          "Microsoft.Extensions.Logging": "10.0.2",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Http.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
       "Microsoft.Extensions.Http.Diagnostics/10.0.0": {
         "dependencies": {
+          "Microsoft.Extensions.Http": "10.0.2",
           "Microsoft.Extensions.Telemetry": "10.0.0"
         },
         "runtime": {
@@ -387,6 +653,7 @@
       },
       "Microsoft.Extensions.Http.Polly/10.0.0": {
         "dependencies": {
+          "Microsoft.Extensions.Http": "10.0.2",
           "Polly": "7.2.4",
           "Polly.Extensions.Http": "3.0.0"
         },
@@ -409,9 +676,109 @@
           }
         }
       },
+      "Microsoft.Extensions.Identity.Core/10.0.2": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "10.0.2",
+          "Microsoft.Extensions.Diagnostics": "10.0.2",
+          "Microsoft.Extensions.Logging": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Identity.Core.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Identity.Stores/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Identity.Core": "10.0.2",
+          "Microsoft.Extensions.Logging": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Identity.Stores.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "10.0.2",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Logging.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Primitives": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Options.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options.ConfigurationExtensions/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Configuration.Binder": "10.0.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2",
+          "Microsoft.Extensions.Primitives": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options.DataAnnotations/10.0.2": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2"
+        },
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Options.DataAnnotations.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
+      "Microsoft.Extensions.Primitives/10.0.2": {
+        "runtime": {
+          "lib/net10.0/Microsoft.Extensions.Primitives.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
       "Microsoft.Extensions.Resilience/10.0.0": {
         "dependencies": {
+          "Microsoft.Extensions.Diagnostics": "10.0.2",
           "Microsoft.Extensions.Diagnostics.ExceptionSummarization": "10.0.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "10.0.2",
           "Microsoft.Extensions.Telemetry.Abstractions": "10.0.0",
           "Polly.Extensions": "8.4.2",
           "Polly.RateLimiting": "8.4.2"
@@ -438,7 +805,9 @@
       },
       "Microsoft.Extensions.Telemetry.Abstractions/10.0.0": {
         "dependencies": {
-          "Microsoft.Extensions.Compliance.Abstractions": "10.0.0"
+          "Microsoft.Extensions.Compliance.Abstractions": "10.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2"
         },
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.Telemetry.Abstractions.dll": {
@@ -490,6 +859,7 @@
       },
       "Microsoft.IdentityModel.Tokens/8.14.0": {
         "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.2",
           "Microsoft.IdentityModel.Logging": "8.14.0"
         },
         "runtime": {
@@ -549,6 +919,9 @@
         }
       },
       "MiniProfiler.Shared/4.5.4": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2"
+        },
         "runtime": {
           "lib/net8.0/MiniProfiler.Shared.dll": {
             "assemblyVersion": "4.0.0.0",
@@ -608,6 +981,8 @@
       },
       "OpenIddict.Abstractions/7.2.0": {
         "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Primitives": "10.0.2",
           "Microsoft.IdentityModel.Tokens": "8.14.0"
         },
         "runtime": {
@@ -630,6 +1005,7 @@
       },
       "OpenIddict.Client/7.2.0": {
         "dependencies": {
+          "Microsoft.Extensions.Logging": "10.0.2",
           "Microsoft.IdentityModel.JsonWebTokens": "8.14.0",
           "Microsoft.IdentityModel.Protocols": "8.14.0",
           "OpenIddict.Abstractions": "7.2.0"
@@ -665,6 +1041,7 @@
       },
       "OpenIddict.Client.SystemIntegration/7.2.0": {
         "dependencies": {
+          "Microsoft.Extensions.Hosting.Abstractions": "10.0.2",
           "OpenIddict.Client": "7.2.0"
         },
         "runtime": {
@@ -701,6 +1078,9 @@
       },
       "OpenIddict.Core/7.2.0": {
         "dependencies": {
+          "Microsoft.Extensions.Caching.Memory": "10.0.2",
+          "Microsoft.Extensions.Logging": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2",
           "OpenIddict.Abstractions": "7.2.0"
         },
         "runtime": {
@@ -712,6 +1092,7 @@
       },
       "OpenIddict.Server/7.2.0": {
         "dependencies": {
+          "Microsoft.Extensions.Logging": "10.0.2",
           "Microsoft.IdentityModel.JsonWebTokens": "8.14.0",
           "OpenIddict.Abstractions": "7.2.0"
         },
@@ -746,6 +1127,7 @@
       },
       "OpenIddict.Validation/7.2.0": {
         "dependencies": {
+          "Microsoft.Extensions.Logging": "10.0.2",
           "Microsoft.IdentityModel.JsonWebTokens": "8.14.0",
           "Microsoft.IdentityModel.Protocols": "8.14.0",
           "OpenIddict.Abstractions": "7.2.0"
@@ -822,6 +1204,8 @@
       },
       "Polly.Extensions/8.4.2": {
         "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2",
           "Polly.Core": "8.4.2"
         },
         "runtime": {
@@ -913,6 +1297,9 @@
       },
       "Serilog.Extensions.Hosting/9.0.0": {
         "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Hosting.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.2",
           "Serilog": "4.3.0",
           "Serilog.Extensions.Logging": "9.0.0"
         },
@@ -925,6 +1312,7 @@
       },
       "Serilog.Extensions.Logging/9.0.0": {
         "dependencies": {
+          "Microsoft.Extensions.Logging": "10.0.2",
           "Serilog": "4.3.0"
         },
         "runtime": {
@@ -959,6 +1347,7 @@
       },
       "Serilog.Settings.Configuration/9.0.0": {
         "dependencies": {
+          "Microsoft.Extensions.Configuration.Binder": "10.0.2",
           "Microsoft.Extensions.DependencyModel": "9.0.0",
           "Serilog": "4.3.0"
         },
@@ -1024,40 +1413,40 @@
           }
         }
       },
-      "Swashbuckle.AspNetCore/10.0.1": {
+      "Swashbuckle.AspNetCore/10.1.0": {
         "dependencies": {
-          "Swashbuckle.AspNetCore.Swagger": "10.0.1",
-          "Swashbuckle.AspNetCore.SwaggerGen": "10.0.1",
-          "Swashbuckle.AspNetCore.SwaggerUI": "10.0.1"
+          "Swashbuckle.AspNetCore.Swagger": "10.1.0",
+          "Swashbuckle.AspNetCore.SwaggerGen": "10.1.0",
+          "Swashbuckle.AspNetCore.SwaggerUI": "10.1.0"
         }
       },
-      "Swashbuckle.AspNetCore.Swagger/10.0.1": {
+      "Swashbuckle.AspNetCore.Swagger/10.1.0": {
         "dependencies": {
           "Microsoft.OpenApi": "2.3.0"
         },
         "runtime": {
           "lib/net10.0/Swashbuckle.AspNetCore.Swagger.dll": {
-            "assemblyVersion": "10.0.1.0",
-            "fileVersion": "10.0.1.1964"
+            "assemblyVersion": "10.1.0.0",
+            "fileVersion": "10.1.0.2093"
           }
         }
       },
-      "Swashbuckle.AspNetCore.SwaggerGen/10.0.1": {
+      "Swashbuckle.AspNetCore.SwaggerGen/10.1.0": {
         "dependencies": {
-          "Swashbuckle.AspNetCore.Swagger": "10.0.1"
+          "Swashbuckle.AspNetCore.Swagger": "10.1.0"
         },
         "runtime": {
           "lib/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
-            "assemblyVersion": "10.0.1.0",
-            "fileVersion": "10.0.1.1964"
+            "assemblyVersion": "10.1.0.0",
+            "fileVersion": "10.1.0.2093"
           }
         }
       },
-      "Swashbuckle.AspNetCore.SwaggerUI/10.0.1": {
+      "Swashbuckle.AspNetCore.SwaggerUI/10.1.0": {
         "runtime": {
           "lib/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
-            "assemblyVersion": "10.0.1.0",
-            "fileVersion": "10.0.1.1964"
+            "assemblyVersion": "10.1.0.0",
+            "fileVersion": "10.1.0.2093"
           }
         }
       },
@@ -1080,31 +1469,59 @@
           }
         }
       },
-      "Umbraco.Cms.Api.Common/17.1.0": {
+      "Umbraco.Cms.Api.Common/17.2.0": {
         "dependencies": {
-          "Asp.Versioning.Mvc": "8.1.0",
-          "Asp.Versioning.Mvc.ApiExplorer": "8.1.0",
+          "Asp.Versioning.Mvc": "8.1.1",
+          "Asp.Versioning.Mvc.ApiExplorer": "8.1.1",
+          "Dazinator.Extensions.FileProviders": "2.0.0",
+          "Examine": "3.7.1",
+          "Examine.Core": "3.7.1",
+          "HtmlAgilityPack": "1.12.4",
+          "K4os.Compression.LZ4": "1.3.8",
+          "MailKit": "4.14.1",
+          "Markdig": "0.44.0",
+          "Markdown": "2.2.1",
+          "MessagePack": "3.1.4",
+          "Microsoft.Extensions.Caching.Hybrid": "10.2.0",
+          "Microsoft.Extensions.FileProviders.Embedded": "10.0.2",
+          "MiniProfiler.AspNetCore.Mvc": "4.5.4",
+          "MiniProfiler.Shared": "4.5.4",
+          "NPoco": "6.1.0",
           "OpenIddict.Abstractions": "7.2.0",
           "OpenIddict.AspNetCore": "7.2.0",
-          "Swashbuckle.AspNetCore": "10.0.1",
-          "Umbraco.Cms.Core": "17.1.0",
-          "Umbraco.Cms.Web.Common": "17.1.0"
+          "Serilog": "4.3.0",
+          "Serilog.AspNetCore": "9.0.0",
+          "Serilog.Enrichers.Process": "3.0.0",
+          "Serilog.Enrichers.Thread": "4.0.0",
+          "Serilog.Expressions": "5.0.0",
+          "Serilog.Extensions.Hosting": "9.0.0",
+          "Serilog.Formatting.Compact": "3.0.0",
+          "Serilog.Formatting.Compact.Reader": "4.0.0",
+          "Serilog.Settings.Configuration": "9.0.0",
+          "Serilog.Sinks.Async": "2.1.0",
+          "Serilog.Sinks.File": "7.0.0",
+          "Serilog.Sinks.Map": "2.0.0",
+          "Swashbuckle.AspNetCore": "10.1.0",
+          "System.Linq.Async": "7.0.0",
+          "Umbraco.Cms.Core": "17.2.0",
+          "Umbraco.Cms.Web.Common": "17.2.0",
+          "NCrontab": "3.4.0"
         },
         "runtime": {
           "lib/net10.0/Umbraco.Cms.Api.Common.dll": {
-            "assemblyVersion": "17.1.0.0",
-            "fileVersion": "17.1.0.269"
+            "assemblyVersion": "17.2.0.0",
+            "fileVersion": "17.2.0.226"
           }
         }
       },
       "Umbraco.Cms.Api.Management/17.0.0": {
         "dependencies": {
           "JsonPatch.Net": "3.3.0",
-          "Swashbuckle.AspNetCore": "10.0.1",
+          "Swashbuckle.AspNetCore": "10.1.0",
           "System.Linq.Async": "7.0.0",
-          "Umbraco.Cms.Api.Common": "17.1.0",
-          "Umbraco.Cms.Infrastructure": "17.1.0",
-          "Umbraco.Cms.PublishedCache.HybridCache": "17.1.0"
+          "Umbraco.Cms.Api.Common": "17.2.0",
+          "Umbraco.Cms.Infrastructure": "17.2.0",
+          "Umbraco.Cms.PublishedCache.HybridCache": "17.2.0"
         },
         "runtime": {
           "lib/net10.0/Umbraco.Cms.Api.Management.dll": {
@@ -1113,32 +1530,51 @@
           }
         }
       },
-      "Umbraco.Cms.Core/17.1.0": {
-        "runtime": {
-          "lib/net10.0/Umbraco.Core.dll": {
-            "assemblyVersion": "17.1.0.0",
-            "fileVersion": "17.1.0.269"
-          }
-        }
-      },
-      "Umbraco.Cms.Examine.Lucene/17.1.0": {
+      "Umbraco.Cms.Core/17.2.0": {
         "dependencies": {
-          "Examine": "3.7.1",
-          "Umbraco.Cms.Infrastructure": "17.1.0"
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Caching.Memory": "10.0.2",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.2",
+          "Microsoft.Extensions.DependencyInjection": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Embedded": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Physical": "10.0.2",
+          "Microsoft.Extensions.Hosting.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Identity.Core": "10.0.2",
+          "Microsoft.Extensions.Logging": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "10.0.2",
+          "Microsoft.Extensions.Options.DataAnnotations": "10.0.2"
         },
         "runtime": {
-          "lib/net10.0/Umbraco.Examine.Lucene.dll": {
-            "assemblyVersion": "17.1.0.0",
-            "fileVersion": "17.1.0.269"
+          "lib/net10.0/Umbraco.Core.dll": {
+            "assemblyVersion": "17.2.0.0",
+            "fileVersion": "17.2.0.226"
           }
         }
       },
-      "Umbraco.Cms.Infrastructure/17.1.0": {
+      "Umbraco.Cms.Examine.Lucene/17.2.0": {
         "dependencies": {
+          "Examine": "3.7.1",
           "Examine.Core": "3.7.1",
           "HtmlAgilityPack": "1.12.4",
           "MailKit": "4.14.1",
+          "Markdig": "0.44.0",
           "Markdown": "2.2.1",
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Caching.Memory": "10.0.2",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Configuration.Json": "10.0.2",
+          "Microsoft.Extensions.DependencyInjection": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Embedded": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Physical": "10.0.2",
+          "Microsoft.Extensions.Hosting.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Http": "10.0.2",
+          "Microsoft.Extensions.Identity.Core": "10.0.2",
+          "Microsoft.Extensions.Identity.Stores": "10.0.2",
+          "Microsoft.Extensions.Logging": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "10.0.2",
+          "Microsoft.Extensions.Options.DataAnnotations": "10.0.2",
           "MiniProfiler.Shared": "4.5.4",
           "NPoco": "6.1.0",
           "OpenIddict.Abstractions": "7.2.0",
@@ -1154,63 +1590,217 @@
           "Serilog.Sinks.File": "7.0.0",
           "Serilog.Sinks.Map": "2.0.0",
           "System.Linq.Async": "7.0.0",
-          "Umbraco.Cms.Core": "17.1.0",
+          "Umbraco.Cms.Infrastructure": "17.2.0",
+          "NCrontab": "3.4.0"
+        },
+        "runtime": {
+          "lib/net10.0/Umbraco.Examine.Lucene.dll": {
+            "assemblyVersion": "17.2.0.0",
+            "fileVersion": "17.2.0.226"
+          }
+        }
+      },
+      "Umbraco.Cms.Infrastructure/17.2.0": {
+        "dependencies": {
+          "Examine.Core": "3.7.1",
+          "HtmlAgilityPack": "1.12.4",
+          "MailKit": "4.14.1",
+          "Markdig": "0.44.0",
+          "Markdown": "2.2.1",
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Caching.Memory": "10.0.2",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Configuration.Json": "10.0.2",
+          "Microsoft.Extensions.DependencyInjection": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Embedded": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Physical": "10.0.2",
+          "Microsoft.Extensions.Hosting.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Http": "10.0.2",
+          "Microsoft.Extensions.Identity.Core": "10.0.2",
+          "Microsoft.Extensions.Identity.Stores": "10.0.2",
+          "Microsoft.Extensions.Logging": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "10.0.2",
+          "Microsoft.Extensions.Options.DataAnnotations": "10.0.2",
+          "MiniProfiler.Shared": "4.5.4",
+          "NPoco": "6.1.0",
+          "OpenIddict.Abstractions": "7.2.0",
+          "Serilog": "4.3.0",
+          "Serilog.Enrichers.Process": "3.0.0",
+          "Serilog.Enrichers.Thread": "4.0.0",
+          "Serilog.Expressions": "5.0.0",
+          "Serilog.Extensions.Hosting": "9.0.0",
+          "Serilog.Formatting.Compact": "3.0.0",
+          "Serilog.Formatting.Compact.Reader": "4.0.0",
+          "Serilog.Settings.Configuration": "9.0.0",
+          "Serilog.Sinks.Async": "2.1.0",
+          "Serilog.Sinks.File": "7.0.0",
+          "Serilog.Sinks.Map": "2.0.0",
+          "System.Linq.Async": "7.0.0",
+          "Umbraco.Cms.Core": "17.2.0",
           "NCrontab": "3.4.0"
         },
         "runtime": {
           "lib/net10.0/Umbraco.Infrastructure.dll": {
-            "assemblyVersion": "17.1.0.0",
-            "fileVersion": "17.1.0.269"
+            "assemblyVersion": "17.2.0.0",
+            "fileVersion": "17.2.0.226"
           }
         }
       },
-      "Umbraco.Cms.PublishedCache.HybridCache/17.1.0": {
+      "Umbraco.Cms.PublishedCache.HybridCache/17.2.0": {
         "dependencies": {
+          "Examine.Core": "3.7.1",
+          "HtmlAgilityPack": "1.12.4",
           "K4os.Compression.LZ4": "1.3.8",
+          "MailKit": "4.14.1",
+          "Markdig": "0.44.0",
+          "Markdown": "2.2.1",
           "MessagePack": "3.1.4",
-          "Microsoft.Extensions.Caching.Hybrid": "10.0.0",
-          "Umbraco.Cms.Core": "17.1.0",
-          "Umbraco.Cms.Infrastructure": "17.1.0"
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Caching.Hybrid": "10.2.0",
+          "Microsoft.Extensions.Caching.Memory": "10.0.2",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Configuration.Json": "10.0.2",
+          "Microsoft.Extensions.DependencyInjection": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Embedded": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Physical": "10.0.2",
+          "Microsoft.Extensions.Hosting.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Http": "10.0.2",
+          "Microsoft.Extensions.Identity.Core": "10.0.2",
+          "Microsoft.Extensions.Identity.Stores": "10.0.2",
+          "Microsoft.Extensions.Logging": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "10.0.2",
+          "Microsoft.Extensions.Options.DataAnnotations": "10.0.2",
+          "MiniProfiler.Shared": "4.5.4",
+          "NPoco": "6.1.0",
+          "OpenIddict.Abstractions": "7.2.0",
+          "Serilog": "4.3.0",
+          "Serilog.Enrichers.Process": "3.0.0",
+          "Serilog.Enrichers.Thread": "4.0.0",
+          "Serilog.Expressions": "5.0.0",
+          "Serilog.Extensions.Hosting": "9.0.0",
+          "Serilog.Formatting.Compact": "3.0.0",
+          "Serilog.Formatting.Compact.Reader": "4.0.0",
+          "Serilog.Settings.Configuration": "9.0.0",
+          "Serilog.Sinks.Async": "2.1.0",
+          "Serilog.Sinks.File": "7.0.0",
+          "Serilog.Sinks.Map": "2.0.0",
+          "System.Linq.Async": "7.0.0",
+          "Umbraco.Cms.Core": "17.2.0",
+          "Umbraco.Cms.Infrastructure": "17.2.0",
+          "NCrontab": "3.4.0"
         },
         "runtime": {
           "lib/net10.0/Umbraco.PublishedCache.HybridCache.dll": {
-            "assemblyVersion": "17.1.0.0",
-            "fileVersion": "17.1.0.269"
+            "assemblyVersion": "17.2.0.0",
+            "fileVersion": "17.2.0.226"
           }
         }
       },
-      "Umbraco.Cms.Web.Common/17.1.0": {
+      "Umbraco.Cms.Web.Common/17.2.0": {
         "dependencies": {
-          "Asp.Versioning.Mvc": "8.1.0",
-          "Asp.Versioning.Mvc.ApiExplorer": "8.1.0",
+          "Asp.Versioning.Mvc": "8.1.1",
+          "Asp.Versioning.Mvc.ApiExplorer": "8.1.1",
           "Dazinator.Extensions.FileProviders": "2.0.0",
+          "Examine": "3.7.1",
+          "Examine.Core": "3.7.1",
+          "HtmlAgilityPack": "1.12.4",
+          "K4os.Compression.LZ4": "1.3.8",
+          "MailKit": "4.14.1",
+          "Markdig": "0.44.0",
+          "Markdown": "2.2.1",
+          "MessagePack": "3.1.4",
+          "Microsoft.Extensions.Caching.Hybrid": "10.2.0",
+          "Microsoft.Extensions.FileProviders.Embedded": "10.0.2",
           "MiniProfiler.AspNetCore.Mvc": "4.5.4",
+          "MiniProfiler.Shared": "4.5.4",
+          "NPoco": "6.1.0",
+          "OpenIddict.Abstractions": "7.2.0",
+          "Serilog": "4.3.0",
           "Serilog.AspNetCore": "9.0.0",
-          "Umbraco.Cms.Examine.Lucene": "17.1.0",
-          "Umbraco.Cms.PublishedCache.HybridCache": "17.1.0"
+          "Serilog.Enrichers.Process": "3.0.0",
+          "Serilog.Enrichers.Thread": "4.0.0",
+          "Serilog.Expressions": "5.0.0",
+          "Serilog.Extensions.Hosting": "9.0.0",
+          "Serilog.Formatting.Compact": "3.0.0",
+          "Serilog.Formatting.Compact.Reader": "4.0.0",
+          "Serilog.Settings.Configuration": "9.0.0",
+          "Serilog.Sinks.Async": "2.1.0",
+          "Serilog.Sinks.File": "7.0.0",
+          "Serilog.Sinks.Map": "2.0.0",
+          "System.Linq.Async": "7.0.0",
+          "Umbraco.Cms.Examine.Lucene": "17.2.0",
+          "Umbraco.Cms.PublishedCache.HybridCache": "17.2.0",
+          "NCrontab": "3.4.0"
         },
         "runtime": {
           "lib/net10.0/Umbraco.Web.Common.dll": {
-            "assemblyVersion": "17.1.0.0",
-            "fileVersion": "17.1.0.269"
+            "assemblyVersion": "17.2.0.0",
+            "fileVersion": "17.2.0.226"
           }
         }
       },
-      "Umbraco.Cms.Web.Website/17.1.0": {
+      "Umbraco.Cms.Web.Website/17.2.0": {
         "dependencies": {
-          "Umbraco.Cms.Web.Common": "17.1.0"
+          "Asp.Versioning.Mvc": "8.1.1",
+          "Asp.Versioning.Mvc.ApiExplorer": "8.1.1",
+          "Dazinator.Extensions.FileProviders": "2.0.0",
+          "Examine": "3.7.1",
+          "Examine.Core": "3.7.1",
+          "HtmlAgilityPack": "1.12.4",
+          "K4os.Compression.LZ4": "1.3.8",
+          "MailKit": "4.14.1",
+          "Markdig": "0.44.0",
+          "Markdown": "2.2.1",
+          "MessagePack": "3.1.4",
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Caching.Hybrid": "10.2.0",
+          "Microsoft.Extensions.Caching.Memory": "10.0.2",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Configuration.Json": "10.0.2",
+          "Microsoft.Extensions.DependencyInjection": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Embedded": "10.0.2",
+          "Microsoft.Extensions.FileProviders.Physical": "10.0.2",
+          "Microsoft.Extensions.Hosting.Abstractions": "10.0.2",
+          "Microsoft.Extensions.Http": "10.0.2",
+          "Microsoft.Extensions.Identity.Core": "10.0.2",
+          "Microsoft.Extensions.Identity.Stores": "10.0.2",
+          "Microsoft.Extensions.Logging": "10.0.2",
+          "Microsoft.Extensions.Options": "10.0.2",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "10.0.2",
+          "Microsoft.Extensions.Options.DataAnnotations": "10.0.2",
+          "MiniProfiler.AspNetCore.Mvc": "4.5.4",
+          "MiniProfiler.Shared": "4.5.4",
+          "NPoco": "6.1.0",
+          "OpenIddict.Abstractions": "7.2.0",
+          "Serilog": "4.3.0",
+          "Serilog.AspNetCore": "9.0.0",
+          "Serilog.Enrichers.Process": "3.0.0",
+          "Serilog.Enrichers.Thread": "4.0.0",
+          "Serilog.Expressions": "5.0.0",
+          "Serilog.Extensions.Hosting": "9.0.0",
+          "Serilog.Formatting.Compact": "3.0.0",
+          "Serilog.Formatting.Compact.Reader": "4.0.0",
+          "Serilog.Settings.Configuration": "9.0.0",
+          "Serilog.Sinks.Async": "2.1.0",
+          "Serilog.Sinks.File": "7.0.0",
+          "Serilog.Sinks.Map": "2.0.0",
+          "System.Linq.Async": "7.0.0",
+          "Umbraco.Cms.Web.Common": "17.2.0",
+          "NCrontab": "3.4.0"
         },
         "runtime": {
           "lib/net10.0/Umbraco.Web.Website.dll": {
-            "assemblyVersion": "17.1.0.0",
-            "fileVersion": "17.1.0.269"
+            "assemblyVersion": "17.2.0.0",
+            "fileVersion": "17.2.0.226"
           }
         }
       }
     }
   },
   "libraries": {
-    "TagManager/17.0.0": {
+    "TagManager/17.0.0-beta.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1222,26 +1812,26 @@
       "path": "asp.versioning.abstractions/8.1.0",
       "hashPath": "asp.versioning.abstractions.8.1.0.nupkg.sha512"
     },
-    "Asp.Versioning.Http/8.1.0": {
+    "Asp.Versioning.Http/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Xu4xF62Cu9JqYi/CTa2TiK5kyHoa4EluPynj/bPFWDmlTIPzuJQbBI5RgFYVRFHjFVvWMoA77acRaFu7i7Wzqg==",
-      "path": "asp.versioning.http/8.1.0",
-      "hashPath": "asp.versioning.http.8.1.0.nupkg.sha512"
+      "sha512": "sha512-1D/Mzq1MSUSQe1eCY6GeEsu+tIlpzoWZxZkhlcw/uvtVoTrwO+BMl0fSj/XX8oZN1DutWTZqHDHgyDRq+IeSdQ==",
+      "path": "asp.versioning.http/8.1.1",
+      "hashPath": "asp.versioning.http.8.1.1.nupkg.sha512"
     },
-    "Asp.Versioning.Mvc/8.1.0": {
+    "Asp.Versioning.Mvc/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-BMAJM2sGsTUw5FQ9upKQt6GFoldWksePgGpYjl56WSRvIuE3UxKZh0gAL+wDTIfLshUZm97VCVxlOGyrcjWz9Q==",
-      "path": "asp.versioning.mvc/8.1.0",
-      "hashPath": "asp.versioning.mvc.8.1.0.nupkg.sha512"
+      "sha512": "sha512-mkJv6eAdlbHbqTdrUcfEYFoZuGL6HoR7O+Lfsvivixp7N5BNhfCFPPOwsBzdIiH1qzdJXyJf+C+DZ08j27PMPg==",
+      "path": "asp.versioning.mvc/8.1.1",
+      "hashPath": "asp.versioning.mvc.8.1.1.nupkg.sha512"
     },
-    "Asp.Versioning.Mvc.ApiExplorer/8.1.0": {
+    "Asp.Versioning.Mvc.ApiExplorer/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-a90gW/4TF/14Bjiwg9LqNtdKGC4G3gu02+uynq3bCISfQm48km5chny4Yg5J4hixQPJUwwJJ9Do1G+jM8L9h3g==",
-      "path": "asp.versioning.mvc.apiexplorer/8.1.0",
-      "hashPath": "asp.versioning.mvc.apiexplorer.8.1.0.nupkg.sha512"
+      "sha512": "sha512-u8PrP6CjmurgIh0EDfg8Gc/GdpDHgkbv8OLKdxQcWb5W4sp0i9BcdbQlLvRcATjNIJUyr7ZmqXjmdsFfqnuy0g==",
+      "path": "asp.versioning.mvc.apiexplorer/8.1.1",
+      "hashPath": "asp.versioning.mvc.apiexplorer.8.1.1.nupkg.sha512"
     },
     "BouncyCastle.Cryptography/2.6.1": {
       "type": "package",
@@ -1404,6 +1994,13 @@
       "path": "mailkit/4.14.1",
       "hashPath": "mailkit.4.14.1.nupkg.sha512"
     },
+    "Markdig/0.44.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-X+CYMjcUnh/yO24wOSQxVFLiGqWrrtXJ5M7toHiM1Zk4Fg9UMLN5fkaq6FSOWH+mIprsHHgDMlq3MJhmrXalhg==",
+      "path": "markdig/0.44.0",
+      "hashPath": "markdig.0.44.0.nupkg.sha512"
+    },
     "Markdown/2.2.1": {
       "type": "package",
       "serviceable": true,
@@ -1425,6 +2022,20 @@
       "path": "messagepack.annotations/3.1.4",
       "hashPath": "messagepack.annotations.3.1.4.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Cryptography.Internal/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7ZsZ+hJgjfAcd4fm11B7b8luweBA3SAP7CCFAWb/9He3F+7Wg/cc6swp4ZBZSJkWM3Ddn8sIZeobU9CSD2a3eg==",
+      "path": "microsoft.aspnetcore.cryptography.internal/10.0.2",
+      "hashPath": "microsoft.aspnetcore.cryptography.internal.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Cryptography.KeyDerivation/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iJ9VWYJ7pK/qReA2OZCQguqLaLaqxCBGLlH5Dlx/fNNLFvIbBOYAWCs2RDs1kO+aHCI3kS5ZIt1c5VojWi4PDQ==",
+      "path": "microsoft.aspnetcore.cryptography.keyderivation/10.0.2",
+      "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.10.0.2.nupkg.sha512"
+    },
     "Microsoft.Extensions.AmbientMetadata.Application/10.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1432,12 +2043,26 @@
       "path": "microsoft.extensions.ambientmetadata.application/10.0.0",
       "hashPath": "microsoft.extensions.ambientmetadata.application.10.0.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Caching.Hybrid/10.0.0": {
+    "Microsoft.Extensions.Caching.Abstractions/10.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xvhmF2dlwC3e8KKSuWOjJkjQdKG80991CUqjDnqzV1Od0CgMqbDw49kGJ9RiGrp3nbLTYCSb3c+KYo6TcENYRw==",
-      "path": "microsoft.extensions.caching.hybrid/10.0.0",
-      "hashPath": "microsoft.extensions.caching.hybrid.10.0.0.nupkg.sha512"
+      "sha512": "sha512-WIRPDa/qoKHmJhTAPCO/zLu9kRLQ2Fd6HD5tzgdXJ3xGEVXDHP6FvakKJjynwKrVDld8H4G4tcbW53wuC/wxMQ==",
+      "path": "microsoft.extensions.caching.abstractions/10.0.2",
+      "hashPath": "microsoft.extensions.caching.abstractions.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Caching.Hybrid/10.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6V4hCqV65Zgsh6mbfcH1AU7iDcjQZoqxue/p3vpNYEaLRR+GjGLfoT6/XZLYc875qS8c3hdCs8wSZtMVpKJlwA==",
+      "path": "microsoft.extensions.caching.hybrid/10.2.0",
+      "hashPath": "microsoft.extensions.caching.hybrid.10.2.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Caching.Memory/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MkdPYdtsu0Ta4m9Di4XnWVdO9u+wi1LtvisoR1EteIxsXWO/+3iyAPH6RZbw2lBlWZu9lastbl2YsHVIaL9j+g==",
+      "path": "microsoft.extensions.caching.memory/10.0.2",
+      "hashPath": "microsoft.extensions.caching.memory.10.0.2.nupkg.sha512"
     },
     "Microsoft.Extensions.Compliance.Abstractions/10.0.0": {
       "type": "package",
@@ -1445,6 +2070,55 @@
       "sha512": "sha512-dfJxd9USR8BbRzZZPWVoqFVVESJRTUh2tn6TmSPQsJ2mJjvGsGJGlELM9vctAfgthajBicRZ9zzxsu6s4VUmMQ==",
       "path": "microsoft.extensions.compliance.abstractions/10.0.0",
       "hashPath": "microsoft.extensions.compliance.abstractions.10.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Lws+o4DFw6p5NquRoYA3d5QVvi49ugNw7TxbW4QGLsL8F1LCCyJqWFy0+RMQ/hzUuS9aKV5NJ/XGAF5N9/RQcQ==",
+      "path": "microsoft.extensions.configuration/10.0.2",
+      "hashPath": "microsoft.extensions.configuration.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Abstractions/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KC5PslaTDnTuTvyke0KYAVBYdZ7IVTsU3JhHe69BpEbHLcj1YThP3bIGtZNOkZfast2AuLnul5lk4rZKxAdUGQ==",
+      "path": "microsoft.extensions.configuration.abstractions/10.0.2",
+      "hashPath": "microsoft.extensions.configuration.abstractions.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Binder/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/SdW50prUuenglSy7MXU3eVQkOk4/J4fjc+GIhv4NkTmaZOQyTqpVAYi8nRjNtOKHzCy7g5cSlOSgkbT7clLwQ==",
+      "path": "microsoft.extensions.configuration.binder/10.0.2",
+      "hashPath": "microsoft.extensions.configuration.binder.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.FileExtensions/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6vStNVa/7hcT6VrYvVMGCWUl/QIKwNeQaSGnKw1E4RPpZbQbOjDsATCbrQUa0sFUs7LW8T9aZ2NBKttMz1+WuA==",
+      "path": "microsoft.extensions.configuration.fileextensions/10.0.2",
+      "hashPath": "microsoft.extensions.configuration.fileextensions.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Json/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ovjOVr+rNxOT249iezwihlPNMaIJdBC6PMGeMnzhkm5EoKJWFjp3mmvtndfHY6A88X4wulXlidMhmjX8v6V/aw==",
+      "path": "microsoft.extensions.configuration.json/10.0.2",
+      "hashPath": "microsoft.extensions.configuration.json.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-J/Zmp6fY93JbaiZ11ckWvcyxMPjD6XVwIHQXBjryTBgn7O6O20HYg9uVLFcZlNfgH78MnreE/7EH+hjfzn7VyA==",
+      "path": "microsoft.extensions.dependencyinjection/10.0.2",
+      "hashPath": "microsoft.extensions.dependencyinjection.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zOIurr59+kUf9vNcsUkCvKWZv+fPosUZXURZesYkJCvl0EzTc9F7maAO4Cd2WEV7ZJJ0AZrFQvuH6Npph9wdBw==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/10.0.2",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.10.0.2.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyInjection.AutoActivation/10.0.0": {
       "type": "package",
@@ -1460,12 +2134,68 @@
       "path": "microsoft.extensions.dependencymodel/9.0.0",
       "hashPath": "microsoft.extensions.dependencymodel.9.0.0.nupkg.sha512"
     },
+    "Microsoft.Extensions.Diagnostics/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+2lv/hi6VGnaJt4877BFkkySiMiHrKCeX7K5ElIshIKpF65o63zeXMnUR4U6EQ/eM75Hx7T8s3RcqnjdcnVB1A==",
+      "path": "microsoft.extensions.diagnostics/10.0.2",
+      "hashPath": "microsoft.extensions.diagnostics.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Diagnostics.Abstractions/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GaiaeKUuLuUbRPkUokndDuzonhO6dk4lcfGflHsCeXiJ5JrZxcyks1KuG6eB9pON16x/+9uWfa4w9g3oP8AYvQ==",
+      "path": "microsoft.extensions.diagnostics.abstractions/10.0.2",
+      "hashPath": "microsoft.extensions.diagnostics.abstractions.10.0.2.nupkg.sha512"
+    },
     "Microsoft.Extensions.Diagnostics.ExceptionSummarization/10.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-rfirztoSX5INXWX6YJ1iwTPfmsl53c3t3LN7rjOXbt5w5e0CmGVaUHYhABYq+rn+d+w0HWqgMiQubOZeirUAfw==",
       "path": "microsoft.extensions.diagnostics.exceptionsummarization/10.0.0",
       "hashPath": "microsoft.extensions.diagnostics.exceptionsummarization.10.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+r/eJ+slW/EmwWmH3En4gzRg1k6+yTqexoHBrMuz5fxsIKJA8MDiSGepjw/ko3XyNqg+w3dxQe+huoVXs5XDJw==",
+      "path": "microsoft.extensions.fileproviders.abstractions/10.0.2",
+      "hashPath": "microsoft.extensions.fileproviders.abstractions.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Embedded/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KgfcpgdcDdxuwBp1q/KpBHaT0MpPdu5vmQ6hNTiiwg5pKFQBINSF7muRFsf3A0MRey9RZ1AuS0OTHKKq+uv+nQ==",
+      "path": "microsoft.extensions.fileproviders.embedded/10.0.2",
+      "hashPath": "microsoft.extensions.fileproviders.embedded.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Physical/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4+ypApaugtHIz5Q2Z3oC4+erDbOgy0HrMFYS3Nm3qmTXyqK7sU7LJWY9gci99Wcx6j7ivgk8kdCkgmvsA4t0Ow==",
+      "path": "microsoft.extensions.fileproviders.physical/10.0.2",
+      "hashPath": "microsoft.extensions.fileproviders.physical.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileSystemGlobbing/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XozoMaWcFIv1tv0LDF+YMeZYjiNiNIewpNdZ3TEoVGf8ROrp0hVoEdUyUBsI8oYGM5U3Z5hiNEv0j2Z5COnMgg==",
+      "path": "microsoft.extensions.filesystemglobbing/10.0.2",
+      "hashPath": "microsoft.extensions.filesystemglobbing.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Hosting.Abstractions/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CeAAPVOtI/wtBcHOwq6Pw3VPdGi+pNaGHZj6vfXX/5zr8beO9SyL7IOCSQ70BauFTAFS0QF7f6zu2A6hC8D6nw==",
+      "path": "microsoft.extensions.hosting.abstractions/10.0.2",
+      "hashPath": "microsoft.extensions.hosting.abstractions.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Http/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-egUPC0xydb1ugCMcRyJ6zaOGOzx7N4coOVlGeLcIsXhUf1xHHwZeX+ob7JuG0dXExFduHYE/t+4/4y8BLlBKmw==",
+      "path": "microsoft.extensions.http/10.0.2",
+      "hashPath": "microsoft.extensions.http.10.0.2.nupkg.sha512"
     },
     "Microsoft.Extensions.Http.Diagnostics/10.0.0": {
       "type": "package",
@@ -1487,6 +2217,62 @@
       "sha512": "sha512-Mn/diApGtdtz83Mi+XO57WhO+FsiSScfjUsIU/h8nryh3pkUNZGhpUx22NtuOxgYSsrYfODgOa2QMtIQAOv/dA==",
       "path": "microsoft.extensions.http.resilience/10.0.0",
       "hashPath": "microsoft.extensions.http.resilience.10.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Identity.Core/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ggq90fSPP/+OumEZosZiPZ7cCrog8X2MrGZ5oqM/5Ch0Df4qyYYIukrreqqYseNp/HV4artU8Uzrjb30mYvWhw==",
+      "path": "microsoft.extensions.identity.core/10.0.2",
+      "hashPath": "microsoft.extensions.identity.core.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Identity.Stores/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oG2mLpDoh+U604uV1UxEfX3mWLH2tFbsCvTbZnY6FpyEG8GHDAXIoW7xq9nYZtvN33WwSVnTRmEcxBg9HoE/KA==",
+      "path": "microsoft.extensions.identity.stores/10.0.2",
+      "hashPath": "microsoft.extensions.identity.stores.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-a0EWuBs6D3d7XMGroDXm+WsAi5CVVfjOJvyxurzWnuhBN9CO+1qHKcrKV1JK7H/T4ZtHIoVCOX/YyWM8K87qtw==",
+      "path": "microsoft.extensions.logging/10.0.2",
+      "hashPath": "microsoft.extensions.logging.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging.Abstractions/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RZkez/JjpnO+MZ6efKkSynN6ZztLpw3WbxNzjLCPBd97wWj1S9ZYPWi0nmT4kWBRa6atHsdM1ydGkUr8GudyDQ==",
+      "path": "microsoft.extensions.logging.abstractions/10.0.2",
+      "hashPath": "microsoft.extensions.logging.abstractions.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1De2LJjmxdqopI5AYC5dIhoZQ79AR5ayywxNF1rXrXFtKQfbQOV9+n/IsZBa7qWlr0MqoGpW8+OY2v/57udZOA==",
+      "path": "microsoft.extensions.options/10.0.2",
+      "hashPath": "microsoft.extensions.options.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options.ConfigurationExtensions/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8njGDg0OdDBM4Zox0ybuUOJZkQ8HcH49F+POZBlG+nsfzEyqOCHyHEkWeRVI62qsssiugUVEKqUttT1ZbV0aJQ==",
+      "path": "microsoft.extensions.options.configurationextensions/10.0.2",
+      "hashPath": "microsoft.extensions.options.configurationextensions.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options.DataAnnotations/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4+3rxbvA7CNW+zUmLGHOPo1ZAQmJwipQG7vQsf4PzESD65vJzGF4TaIJ1lCWdANmKKlMAfNu+CuJvR3KsSshKg==",
+      "path": "microsoft.extensions.options.dataannotations/10.0.2",
+      "hashPath": "microsoft.extensions.options.dataannotations.10.0.2.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Primitives/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QmSiO+oLBEooGgB3i0GRXyeYRDHjllqt3k365jwfZlYWhvSHA3UL2NEVV5m8aZa041eIlblo6KMI5txvTMpTwA==",
+      "path": "microsoft.extensions.primitives/10.0.2",
+      "hashPath": "microsoft.extensions.primitives.10.0.2.nupkg.sha512"
     },
     "Microsoft.Extensions.Resilience/10.0.0": {
       "type": "package",
@@ -1880,33 +2666,33 @@
       "path": "serilog.sinks.map/2.0.0",
       "hashPath": "serilog.sinks.map.2.0.0.nupkg.sha512"
     },
-    "Swashbuckle.AspNetCore/10.0.1": {
+    "Swashbuckle.AspNetCore/10.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-177+JNAV5TNvy8gLCdrcWBY9n2jdkxiHQDY4vhaExeqUpKrOqDatCcm/kW3kze60GqfnZ2NobD/IKiAPOL+CEw==",
-      "path": "swashbuckle.aspnetcore/10.0.1",
-      "hashPath": "swashbuckle.aspnetcore.10.0.1.nupkg.sha512"
+      "sha512": "sha512-CvOffaJKStoP0hdfCIX4V/9wuwRkSOJd+PehGo/Y5ALh0WYliLwuMlyh1BbgG7uQtJNe1k5P7QIhIaFfZ/aJAw==",
+      "path": "swashbuckle.aspnetcore/10.1.0",
+      "hashPath": "swashbuckle.aspnetcore.10.1.0.nupkg.sha512"
     },
-    "Swashbuckle.AspNetCore.Swagger/10.0.1": {
+    "Swashbuckle.AspNetCore.Swagger/10.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-HJYFSP18YF1Z6LCwunL+v8wuZUzzvcjarB8AJna/NVVIpq11FH9BW/D/6abwigu7SsKRbisStmk8xu2mTsxxHg==",
-      "path": "swashbuckle.aspnetcore.swagger/10.0.1",
-      "hashPath": "swashbuckle.aspnetcore.swagger.10.0.1.nupkg.sha512"
+      "sha512": "sha512-9Kp35Jhkzw73UXnvgGWVgRjvfGx5h1V4fdL9JcPZMKoTyO/bnKD/1i86n8u2p+rVTDed0cDSH4PKbX4WicZ/gg==",
+      "path": "swashbuckle.aspnetcore.swagger/10.1.0",
+      "hashPath": "swashbuckle.aspnetcore.swagger.10.1.0.nupkg.sha512"
     },
-    "Swashbuckle.AspNetCore.SwaggerGen/10.0.1": {
+    "Swashbuckle.AspNetCore.SwaggerGen/10.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vMMBDiTC53KclPs1aiedRZnXkoI2ZgF5/JFr3Dqr8KT7wvIbA/MwD+ormQ4qf25gN5xCrJbmz/9/Z3RrpSofMA==",
-      "path": "swashbuckle.aspnetcore.swaggergen/10.0.1",
-      "hashPath": "swashbuckle.aspnetcore.swaggergen.10.0.1.nupkg.sha512"
+      "sha512": "sha512-XV2gyKmjWs5K5QaSq9rNYtO/E7vr/RcyBkMbbCVUlUtI5OY0HKj260Wee9zsJ7scJf7kPCxeseBiUMRp67ZWxA==",
+      "path": "swashbuckle.aspnetcore.swaggergen/10.1.0",
+      "hashPath": "swashbuckle.aspnetcore.swaggergen.10.1.0.nupkg.sha512"
     },
-    "Swashbuckle.AspNetCore.SwaggerUI/10.0.1": {
+    "Swashbuckle.AspNetCore.SwaggerUI/10.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-a2eLI/fCxJ3WH+H1hr7Q2T82ZBk20FfqYBEZ9hOr3f+426ZUfGU2LxYWzOJrf5/4y6EKShmWpjJG01h3Rc+l6Q==",
-      "path": "swashbuckle.aspnetcore.swaggerui/10.0.1",
-      "hashPath": "swashbuckle.aspnetcore.swaggerui.10.0.1.nupkg.sha512"
+      "sha512": "sha512-ilUsTvGA9hO1ulR7ibdWMWSg3438Iu+pDFcEYUorp+/ClHwaHFdpp/ATfBsFXv2sIRVDbQlEwd5BWBOdMdtKCA==",
+      "path": "swashbuckle.aspnetcore.swaggerui/10.1.0",
+      "hashPath": "swashbuckle.aspnetcore.swaggerui.10.1.0.nupkg.sha512"
     },
     "System.Interactive.Async/7.0.0": {
       "type": "package",
@@ -1922,12 +2708,12 @@
       "path": "system.linq.async/7.0.0",
       "hashPath": "system.linq.async.7.0.0.nupkg.sha512"
     },
-    "Umbraco.Cms.Api.Common/17.1.0": {
+    "Umbraco.Cms.Api.Common/17.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-OTYBUFCdhpHK50qTw8wCrDVMad3V6j7Rg+kBBjSDGW+EJHhHiAp3MkPj4OWz/1cI0GQ9UnPJ28a5kELMEMGwPA==",
-      "path": "umbraco.cms.api.common/17.1.0",
-      "hashPath": "umbraco.cms.api.common.17.1.0.nupkg.sha512"
+      "sha512": "sha512-/BbnI7DU0Knto7RFEMn3BS0++Zhd029HGAP6VFvwUyzuY+3doGl3mD0JurW/LQIA2eOvc5pFxJOWwGCOiFL8KQ==",
+      "path": "umbraco.cms.api.common/17.2.0",
+      "hashPath": "umbraco.cms.api.common.17.2.0.nupkg.sha512"
     },
     "Umbraco.Cms.Api.Management/17.0.0": {
       "type": "package",
@@ -1936,47 +2722,47 @@
       "path": "umbraco.cms.api.management/17.0.0",
       "hashPath": "umbraco.cms.api.management.17.0.0.nupkg.sha512"
     },
-    "Umbraco.Cms.Core/17.1.0": {
+    "Umbraco.Cms.Core/17.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-llyNtEHUlrIyxnf+7GRJWNZt8OTE0f0fAuaIpq+u/+KFYPOU/6vdNHXHSM5hIwPdIxnArujYQaSjjezvon04JQ==",
-      "path": "umbraco.cms.core/17.1.0",
-      "hashPath": "umbraco.cms.core.17.1.0.nupkg.sha512"
+      "sha512": "sha512-njkmm2QLpiXJkKJXNXn4dvaVi0rkkwC3ChS/vxEwEVmJIleBuhMD9aaiHnSRd+MnSq2wHbe+zdcjgZx/PYiM9Q==",
+      "path": "umbraco.cms.core/17.2.0",
+      "hashPath": "umbraco.cms.core.17.2.0.nupkg.sha512"
     },
-    "Umbraco.Cms.Examine.Lucene/17.1.0": {
+    "Umbraco.Cms.Examine.Lucene/17.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PN2aipPiBSV9Pqf+4a2rAz6NxonuFKlG8nUw7R9QMT2hRXfjp2R0mmNVTa49e8P/hSxKrR75lIbYfRIlGVikyA==",
-      "path": "umbraco.cms.examine.lucene/17.1.0",
-      "hashPath": "umbraco.cms.examine.lucene.17.1.0.nupkg.sha512"
+      "sha512": "sha512-Vqd6m4S9RAvViV4l1UnSIqlE090FnJR/qgHAi4yqlGScxe2aExUkg7nhdsNRws8+41kteup1psBev8FLMqwiGQ==",
+      "path": "umbraco.cms.examine.lucene/17.2.0",
+      "hashPath": "umbraco.cms.examine.lucene.17.2.0.nupkg.sha512"
     },
-    "Umbraco.Cms.Infrastructure/17.1.0": {
+    "Umbraco.Cms.Infrastructure/17.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-JqGoYerbXDxxcwWHaAuR2FBfG4v3L4BfBSsYa9xWxYd71WOAj0sxsm9pjFrr2iB7bu43jIpGxrI55t/pEg3XUA==",
-      "path": "umbraco.cms.infrastructure/17.1.0",
-      "hashPath": "umbraco.cms.infrastructure.17.1.0.nupkg.sha512"
+      "sha512": "sha512-JaLyUSOurBBluH+cnh7s8/Q3E7mBh7AKT38SNfbpFgdkhb5eRjg1m0CJx6TAWcdLbS7qm9e7at6+4o85JNODVw==",
+      "path": "umbraco.cms.infrastructure/17.2.0",
+      "hashPath": "umbraco.cms.infrastructure.17.2.0.nupkg.sha512"
     },
-    "Umbraco.Cms.PublishedCache.HybridCache/17.1.0": {
+    "Umbraco.Cms.PublishedCache.HybridCache/17.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-jgFMVkMW7htW492LtlsbvIJXpD08qTPZlYCyG81frq3gBHRdhlCp9kTaIwIg+84FJwfWbVfsfuUA5JUJ+1G22A==",
-      "path": "umbraco.cms.publishedcache.hybridcache/17.1.0",
-      "hashPath": "umbraco.cms.publishedcache.hybridcache.17.1.0.nupkg.sha512"
+      "sha512": "sha512-BKOw3FqbHyiGuFtY5/gq+2epUredS4QtALTkL3S3ipaYGM+9pBpV9bxUskmguf6s6YVIjZVqkj1mtiaIGy9LBA==",
+      "path": "umbraco.cms.publishedcache.hybridcache/17.2.0",
+      "hashPath": "umbraco.cms.publishedcache.hybridcache.17.2.0.nupkg.sha512"
     },
-    "Umbraco.Cms.Web.Common/17.1.0": {
+    "Umbraco.Cms.Web.Common/17.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3MkA75d6b98GMyDjuKYAVvJCDBc/1+6OmQmKdCG2tgrxZrYcI9dVl6IOUqz5iP/hKtQlphaOCL2CsRtHwbvahQ==",
-      "path": "umbraco.cms.web.common/17.1.0",
-      "hashPath": "umbraco.cms.web.common.17.1.0.nupkg.sha512"
+      "sha512": "sha512-WddyR5vhz4H5kgK0vA4sARjbGer9ljk1TWCoE51FotNNWJam4kQKCTXnA/bA4JXCo6j+OdrAuGfjgGJ7raZq+g==",
+      "path": "umbraco.cms.web.common/17.2.0",
+      "hashPath": "umbraco.cms.web.common.17.2.0.nupkg.sha512"
     },
-    "Umbraco.Cms.Web.Website/17.1.0": {
+    "Umbraco.Cms.Web.Website/17.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-VQVkgrAbRLIshSjQFf1NB2Hg2TNIjUPpXYcoiJDU5IHJi8urvP88wruwyYt9HjXYJ2ZGKOLT/DJqdBAjpc9O0w==",
-      "path": "umbraco.cms.web.website/17.1.0",
-      "hashPath": "umbraco.cms.web.website.17.1.0.nupkg.sha512"
+      "sha512": "sha512-zxmIZ6vcZgLWMkdK+jdy3y//ZG2NoO78x4zPdYq/WNH88VlELiHYDkpGY1DviW8GGj9x8G+rRT4qoTqtUNw1ZA==",
+      "path": "umbraco.cms.web.website/17.2.0",
+      "hashPath": "umbraco.cms.web.website.17.2.0.nupkg.sha512"
     }
   }
 }

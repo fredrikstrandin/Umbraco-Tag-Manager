@@ -1,0 +1,23 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TagManagerContentFilesPath>$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\**\*.*</TagManagerContentFilesPath>
+  </PropertyGroup>
+
+  <Target Name="CopyTagManagerAssets" BeforeTargets="BeforeBuild">
+    <ItemGroup>
+      <TagManagerContentFiles Include="$(TagManagerContentFilesPath)" />
+    </ItemGroup>
+    <Message Text="Copying TagManager files from NuGet package - @(TagManagerContentFiles->Count()) files" Importance="high" />
+    <Copy SourceFiles="@(TagManagerContentFiles)" 
+          DestinationFiles="@(TagManagerContentFiles->'$(MSBuildProjectDirectory)\wwwroot\App_Plugins\TagManager\%(RecursiveDir)%(Filename)%(Extension)')" 
+          SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="ClearTagManagerAssets" BeforeTargets="Clean">
+    <ItemGroup>
+      <TagManagerDir Include="$(MSBuildProjectDirectory)\wwwroot\App_Plugins\TagManager\" />
+    </ItemGroup>
+    <Message Text="Cleaning TagManager assets from wwwroot\App_Plugins\TagManager" Importance="high" />
+    <RemoveDir Directories="@(TagManagerDir)" />
+  </Target>
+</Project>

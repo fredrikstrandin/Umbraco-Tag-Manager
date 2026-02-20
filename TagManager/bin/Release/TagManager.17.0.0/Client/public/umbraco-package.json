@@ -1,0 +1,16 @@
+{
+	"$schema": "../../umbraco-package-schema.json",
+	"id": "tagManager",
+	"name": "Tag Manager",
+	"allowPackageTelemetry": true,
+	"version": "17.0.0",
+	"extensions": [
+		{
+			"name": "Tag Manager EntryPoint",
+			"alias": "tagmanager.entrypoint",
+			"type": "entryPoint",
+			"js": "/App_Plugins/TagManager/tagmanager.js"
+		}
+	]
+}
+

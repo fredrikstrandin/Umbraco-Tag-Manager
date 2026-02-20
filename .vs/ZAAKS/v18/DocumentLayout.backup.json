@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\Tagmanager\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FB72FCFC-98BA-D1AA-2CD1-D7BF33ED9F07}|TagManager\\TagManager.csproj|d:\\tagmanager\\tagmanager\\tagmanager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{FB72FCFC-98BA-D1AA-2CD1-D7BF33ED9F07}|TagManager\\TagManager.csproj|solutionrelative:tagmanager\\tagmanager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB72FCFC-98BA-D1AA-2CD1-D7BF33ED9F07}|TagManager\\TagManager.csproj|d:\\tagmanager\\tagmanager\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{FB72FCFC-98BA-D1AA-2CD1-D7BF33ED9F07}|TagManager\\TagManager.csproj|solutionrelative:tagmanager\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FB72FCFC-98BA-D1AA-2CD1-D7BF33ED9F07}|TagManager\\TagManager.csproj|d:\\tagmanager\\tagmanager\\controllers\\tagmanagerapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FB72FCFC-98BA-D1AA-2CD1-D7BF33ED9F07}|TagManager\\TagManager.csproj|solutionrelative:tagmanager\\controllers\\tagmanagerapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4F6121CC-1EBB-4D68-A882-C7DA96751F08}|ZAAKS.Web\\ZAAKS.Web.csproj|d:\\tagmanager\\zaaks.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{4F6121CC-1EBB-4D68-A882-C7DA96751F08}|ZAAKS.Web\\ZAAKS.Web.csproj|solutionrelative:zaaks.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FB72FCFC-98BA-D1AA-2CD1-D7BF33ED9F07}|TagManager\\TagManager.csproj|d:\\tagmanager\\tagmanager\\tagmanager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{FB72FCFC-98BA-D1AA-2CD1-D7BF33ED9F07}|TagManager\\TagManager.csproj|solutionrelative:tagmanager\\tagmanager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FB72FCFC-98BA-D1AA-2CD1-D7BF33ED9F07}|TagManager\\TagManager.csproj|d:\\tagmanager\\tagmanager\\models\\cmstags.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,24 +46,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TagManagerAPIController.cs",
-              "DocumentMoniker": "D:\\Tagmanager\\TagManager\\Controllers\\TagManagerAPIController.cs",
-              "RelativeDocumentMoniker": "TagManager\\Controllers\\TagManagerAPIController.cs",
-              "ToolTip": "D:\\Tagmanager\\TagManager\\Controllers\\TagManagerAPIController.cs",
-              "RelativeToolTip": "TagManager\\Controllers\\TagManagerAPIController.cs",
-              "ViewState": "AgIAANMAAAAAAAAAAAAwwOQAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T05:58:05.989Z",
-              "EditorCaption": ""
+              "DocumentIndex": 1,
+              "Title": "README.md",
+              "DocumentMoniker": "D:\\Tagmanager\\TagManager\\README.md",
+              "RelativeDocumentMoniker": "TagManager\\README.md",
+              "ToolTip": "D:\\Tagmanager\\TagManager\\README.md",
+              "RelativeToolTip": "TagManager\\README.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-02-20T06:01:06.481Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "tagmanager-dashboard.element.ts",
               "DocumentMoniker": "D:\\Tagmanager\\TagManager\\Client\\src\\dashboard\\tagmanager-dashboard.element.ts",
               "RelativeDocumentMoniker": "TagManager\\Client\\src\\dashboard\\tagmanager-dashboard.element.ts",
@@ -67,12 +70,11 @@
               "RelativeToolTip": "TagManager\\Client\\src\\dashboard\\tagmanager-dashboard.element.ts",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-02-13T15:29:36.068Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T15:29:36.068Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Tagmanager\\ZAAKS.Web\\appsettings.json",
               "RelativeDocumentMoniker": "ZAAKS.Web\\appsettings.json",
@@ -80,12 +82,11 @@
               "RelativeToolTip": "ZAAKS.Web\\appsettings.json",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAABgAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-02-13T15:29:36.084Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-13T15:29:36.084Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "cmsTags.cs",
               "DocumentMoniker": "D:\\Tagmanager\\TagManager\\Models\\cmsTags.cs",
               "RelativeDocumentMoniker": "TagManager\\Models\\cmsTags.cs",
@@ -97,7 +98,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "plainPair.cs",
               "DocumentMoniker": "D:\\Tagmanager\\TagManager\\Models\\plainPair.cs",
               "RelativeDocumentMoniker": "TagManager\\Models\\plainPair.cs",
@@ -109,7 +110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "TaggedDocument.cs",
               "DocumentMoniker": "D:\\Tagmanager\\TagManager\\Models\\TaggedDocument.cs",
               "RelativeDocumentMoniker": "TagManager\\Models\\TaggedDocument.cs",
@@ -121,20 +122,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "TagManager.csproj",
               "DocumentMoniker": "D:\\Tagmanager\\TagManager\\TagManager.csproj",
               "RelativeDocumentMoniker": "TagManager\\TagManager.csproj",
               "ToolTip": "D:\\Tagmanager\\TagManager\\TagManager.csproj",
               "RelativeToolTip": "TagManager\\TagManager.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-02-13T06:27:20.732Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "TagManagerAPIController.cs",
+              "DocumentMoniker": "D:\\Tagmanager\\TagManager\\Controllers\\TagManagerAPIController.cs",
+              "RelativeDocumentMoniker": "TagManager\\Controllers\\TagManagerAPIController.cs",
+              "ToolTip": "D:\\Tagmanager\\TagManager\\Controllers\\TagManagerAPIController.cs",
+              "RelativeToolTip": "TagManager\\Controllers\\TagManagerAPIController.cs",
+              "ViewState": "AgIAANMAAAAAAAAAAAAwwOQAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T05:58:05.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ZAAKS.Web.csproj",
               "DocumentMoniker": "D:\\Tagmanager\\ZAAKS.Web\\ZAAKS.Web.csproj",
               "RelativeDocumentMoniker": "ZAAKS.Web\\ZAAKS.Web.csproj",

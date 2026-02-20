@@ -5,7 +5,7 @@
   },
   "projects": {
     "D:\\Tagmanager\\TagManager\\TagManager.csproj": {
-      "version": "17.0.0",
+      "version": "17.0.0-beta.1",
       "restore": {
         "projectUniqueName": "D:\\Tagmanager\\TagManager\\TagManager.csproj",
         "projectName": "TagManager",

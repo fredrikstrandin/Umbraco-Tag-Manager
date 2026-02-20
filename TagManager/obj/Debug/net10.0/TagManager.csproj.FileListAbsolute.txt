@@ -219,7 +219,6 @@ D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.build.TagMana
 D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.buildMultiTargeting.TagManager.props
 D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets\msbuild.buildTransitive.TagManager.props
 D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets.pack.json
-D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 D:\Tagmanager\TagManager\obj\Debug\net10.0\TagManager.dll
 D:\Tagmanager\TagManager\obj\Debug\net10.0\refint\TagManager.dll
 D:\Tagmanager\TagManager\obj\Debug\net10.0\TagManager.xml
@@ -240,3 +239,4 @@ D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\n22z9fktwb-{0}-cd4jr8a8w6-
 D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\9gl9yvpsix-{0}-qn6q5phiec-qn6q5phiec.gz
 D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\f1the5etru-{0}-h64yr1m1o2-h64yr1m1o2.gz
 D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\sr4kj79d2f-{0}-fv5t1c0ajb-fv5t1c0ajb.gz
+D:\Tagmanager\TagManager\obj\Debug\net10.0\TagManager.sourcelink.json

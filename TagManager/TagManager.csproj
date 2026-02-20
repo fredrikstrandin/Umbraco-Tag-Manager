@@ -11,7 +11,7 @@
 	  <PackageTags>umbraco plugin package,umbraco-marketplace</PackageTags>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>17.0.0</Version>
+	  <Version>17.0.0-beta.1</Version>
 	  <Company>ZAAKS!</Company>
 	  <Authors>ZAAKS!</Authors>    
     <!-- NuGet Package Properties -->
@@ -24,7 +24,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/usome/UmbracoTagManager</RepositoryUrl>
+    <RepositoryUrl>https://github.com/ZAAKS/Umbraco-Tag-Manager</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
@@ -35,7 +35,6 @@
 	  <PackageReference Include="Umbraco.Cms.Api.Common" Version="*" />
   </ItemGroup>
 
-  <!-- Include App_Plugins files in the NuGet package -->
 
   <!-- Include the build targets file -->
   <ItemGroup>
