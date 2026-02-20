@@ -11,6 +11,13 @@ For V8 websites, use our previous version: [Umbraco 8 Tag Manager](https://our.u
 
 For V13 websites, use our previous version: [Umbraco 13 Tag Manager](https://www.nuget.org/packages/TagManager/1.0.6).
 
+## Screenshot
+
+Here’s a quick look at how it appears in the Umbraco backoffice:
+
+![Screenshot](https://raw.githubusercontent.com/ZAAKS/Umbraco-Tag-Manager/dev/screenshot/TagManager.png)
+
+
 
 ## Collaboration and Suggestions
 We are open to suggestions and collaboration to build upon this lovely package. This package is part of our ongoing package development and will be updated frequently with new features.
@@ -30,10 +37,4 @@ The tree is split into separate branches for each tag group created, which is us
 - Links to content where the tag is used.
 - The ability to create new tags
 - The ability to search and filter tags
-
-
-
-To Run this project
-admin@example.com
-1234567890
 
