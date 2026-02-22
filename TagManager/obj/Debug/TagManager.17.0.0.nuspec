@@ -12,7 +12,7 @@
     <description>This package has been developed to provide a standard "Umbraco" interface to manage tags within your site.</description>
     <copyright>2026 © ZAAKS!</copyright>
     <tags>umbraco plugin package,umbraco-marketplace</tags>
-    <repository type="git" url="https://github.com/usome/UmbracoTagManager" commit="0627cf4ee5b6c3a4dc45980136ee2d58eaf4ba0a" />
+    <repository type="git" url="https://github.com/ZAAKS/Umbraco-Tag-Manager" commit="aeb248e781859e5062ad197cc5ac4b4a1380e2a7" />
     <dependencies>
       <group targetFramework="net10.0">
         <dependency id="Umbraco.Cms.Api.Common" version="17.2.0" exclude="Build,Analyzers" />

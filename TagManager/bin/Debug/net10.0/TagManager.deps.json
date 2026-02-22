@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v10.0": {
-      "TagManager/17.0.0-beta.1": {
+      "TagManager/17.0.0": {
         "dependencies": {
           "Umbraco.Cms.Api.Common": "17.2.0",
           "Umbraco.Cms.Api.Management": "17.0.0",
@@ -1800,7 +1800,7 @@
     }
   },
   "libraries": {
-    "TagManager/17.0.0-beta.1": {
+    "TagManager/17.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

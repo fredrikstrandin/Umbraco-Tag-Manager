@@ -1,29 +1,45 @@
-﻿using Microsoft.Extensions.Logging;
-using NPoco;
-using Umbraco_Tag_Manager.Models;
-using Umbraco.Cms.Core.Scoping;
-using Microsoft.AspNetCore.Mvc;
-using Umbraco.Cms.Core.Services;
-using Umbraco.Extensions;
-using Asp.Versioning;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Asp.Versioning;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using NPoco;
+using Umbraco_Tag_Manager.Models;
+using Umbraco.Cms.Core.Models;
+using Umbraco.Cms.Core.Scoping;
+using Umbraco.Cms.Core.Services;
 
 namespace Umbraco_Tag_Manager.Controllers
 {
     /// <summary>
-    /// API Controller for TagManager operations
+    /// API Controller for TagManager operations.
+    /// Provides endpoints for reading, creating, updating, and deleting Umbraco tags,
+    /// as well as managing tag relationships across content and media nodes.
     /// </summary>
     [ApiVersion("1.0")]
     [ApiExplorerSettings(GroupName = "TagManager")]
     public class TagManagerApiController : TagManagerApiControllerBase
     {
+        // -----------------------------------------------------------------------
+        // Constants
+        // -----------------------------------------------------------------------
+
+        /// <summary>
+        /// Stored as a set for O(1) lookup and easy extensibility.
+        /// </summary>
+        private static readonly HashSet<string> TagEditorAliases = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "Umbraco.Tags",
+            "Umbraco.TagsPicker"
+        };
+
         private readonly IScopeProvider _scopeProvider;
         private readonly ILogger<TagManagerApiController> _logger;
         private readonly IMediaService _mediaService;
         private readonly IContentService _contentService;
         private readonly ITagService _tagService;
+
 
         public TagManagerApiController(
             IScopeProvider scopeProvider,
@@ -32,432 +48,541 @@ namespace Umbraco_Tag_Manager.Controllers
             IContentService contentService,
             ITagService tagService)
         {
-            _scopeProvider = scopeProvider;
-            _logger = logger;
-            _mediaService = mediaService;
-            _contentService = contentService;
-            _tagService = tagService;
+            _scopeProvider = scopeProvider ?? throw new ArgumentNullException(nameof(scopeProvider));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _mediaService = mediaService ?? throw new ArgumentNullException(nameof(mediaService));
+            _contentService = contentService ?? throw new ArgumentNullException(nameof(contentService));
+            _tagService = tagService ?? throw new ArgumentNullException(nameof(tagService));
         }
 
+        // -----------------------------------------------------------------------
+        // Public API Endpoints
+        // -----------------------------------------------------------------------
+
+        /// <summary>
+        /// Returns a single tag by its database ID, including tagged documents, media,
+        /// and all other tags in the same group.
+        /// </summary>
         [HttpGet("tag/{tagId:int}")]
         public IActionResult GetTagById(int tagId)
         {
-            var tag = new CmsTags();
-
             try
             {
-                using (var scope = _scopeProvider.CreateScope())
-                {
-                    var query = new Sql().Select(
-                        $"id, tag, [group], propertytypeid, count(tagId) as noTaggedNodes FROM cmsTags LEFT JOIN cmsTagRelationship ON cmsTags.id = cmsTagRelationship.tagId Where cmsTags.Id = {tagId} GROUP BY tag, id, [group], propertytypeid;");
+                using var scope = _scopeProvider.CreateScope();
 
-                    tag = scope.Database.Fetch<CmsTags>(query).FirstOrDefault();
+                var tag = FetchTagRow(scope, tagId);
+                if (tag == null)
+                    return NotFound($"Tag with ID {tagId} was not found.");
 
-                    var taggedDocs = GetTaggedDocumentNodeIds(tagId);
+                tag.TaggedDocuments = GetTaggedDocumentNodeIds(tagId);
+                tag.TaggedMedia = GetTaggedMediaNodeIds(tagId);
+                tag.TagsInGroup = GetTagsInGroupForTag(tagId);
 
-                    if (tag != null)
-                    {
-                        tag.TaggedDocuments = taggedDocs;
-
-                        var taggedMedia = GetTaggedMediaNodeIds(tagId);
-
-                        tag.TaggedMedia = taggedMedia;
-
-                        var tagsInGroup = GetAllTagsInGroup(tagId);
-
-                        tag.TagsInGroup = tagsInGroup;
-                    }
-
-                    scope.Complete();
-
-                }
+                scope.Complete();
+                return Ok(tag);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error in GetTagById:");
+                _logger.LogError(ex, "Error retrieving tag with ID {TagId}", tagId);
+                return StatusCode(500, "An error occurred while retrieving the tag.");
             }
-
-
-            return Ok(tag);
         }
 
+        /// <summary>
+        /// Returns all distinct tag groups.
+        /// </summary>
         [HttpGet("taggroups")]
         public IActionResult GetTagGroups()
         {
-            IEnumerable<TagGroup> tagGroups = null;
             try
             {
-                using (var scope = _scopeProvider.CreateScope())
-                {
-                    var query = new Sql().Select("[group] from cmstags GROUP BY [group] ORDER BY [group];");
-                    tagGroups = scope.Database.Fetch<TagGroup>(query);
-                    scope.Complete();
-                }
+                using var scope = _scopeProvider.CreateScope();
+
+                var query = new Sql().Select("[group] FROM cmsTags GROUP BY [group] ORDER BY [group]");
+                var tagGroups = scope.Database.Fetch<dynamic>(query);
+
+                scope.Complete();
+                return Ok(tagGroups);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error in GetAllTagsInGroup:");
+                _logger.LogError(ex, "Error retrieving tag groups");
+                return StatusCode(500, "An error occurred while retrieving tag groups.");
             }
-
-            return Ok(tagGroups);
         }
 
-        public TagInGroup GetAllTagsInGroup(int tagId)
-        {
-            var tagsInGroup = new TagInGroup();
-
-            try
-            {
-                var listOfTags = new List<PlainPair>();
-
-                using (var scope = _scopeProvider.CreateScope())
-                {
-                    var groupNameQuery = new Sql().Select($"[group] FROM cmsTags WHERE id={tagId}");
-                    var resultGroupName = scope.Database.Single<string>(groupNameQuery);
-
-                    var query = new Sql().Select(
-                        $"id, tag FROM cmsTags where [group] = '{resultGroupName}' ORDER BY tag");
-
-                    var results = scope.Database.Fetch<PlainPair>(query);
-
-                    foreach (var result in results)
-                    {
-                        var t = new PlainPair { Id = Convert.ToInt32(result.Id), Tag = result.Tag };
-
-                        listOfTags.Add(t);
-
-                        if (result.Id == tagId)
-                        {
-                            tagsInGroup.SelectedItem = t;
-                        }
-                    }
-
-                    tagsInGroup.Options = listOfTags;
-                    scope.Complete();
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error in Error in GetAllTagsInGroup:");
-            }
-
-            return tagsInGroup;
-        }
-
+        /// <summary>
+        /// Returns all tags within a named group, including relationship counts.
+        /// </summary>
         [HttpGet("tagsingroup/{groupName}")]
-        public IActionResult GetAllTagsInGroup(string groupName)
+        public IActionResult GetTagsInGroup(string groupName)
         {
-            IEnumerable<CmsTags> tags = null;
-            try
-            {
-                using (var scope = _scopeProvider.CreateScope())
-                {
-                    var query = new Sql().Select(
-                        $"id, tag, [group], count(tagId) as noTaggedNodes FROM cmstags LEFT JOIN cmsTagRelationship ON cmsTags.id = cmsTagRelationship.tagId WHERE [group] = '{groupName}' GROUP BY tag, id, [group] ORDER BY tag");
-
-                    tags = scope.Database.Fetch<CmsTags>(query);
-                    scope.Complete();
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error in GetAllTagsInGroup:");
-            }
-            return Ok(tags);
-        }
-
-        public List<TaggedDocument> GetTaggedDocumentNodeIds(int tagId)
-        {
-            var docs = new List<TaggedDocument>();
+            if (string.IsNullOrWhiteSpace(groupName))
+                return BadRequest("Group name is required.");
 
             try
             {
-                using (var scope = _scopeProvider.CreateScope())
-                {
-                    var query = new Sql().Select("nodeId as DocumentId").From("cmsTagRelationship").Where(
-                        $"tagID = {tagId}");
+                using var scope = _scopeProvider.CreateScope();
 
-                    var results = scope.Database.Fetch<TaggedDocument>(query);
-                    foreach (var result in results)
-                    {
-                        var contentService = _contentService;
-                        var content = contentService.GetById(result.DocumentId);
+                var query = new Sql(
+                    "SELECT id, tag, [group], COUNT(tagId) AS noTaggedNodes " +
+                    "FROM cmsTags " +
+                    "LEFT JOIN cmsTagRelationship ON cmsTags.id = cmsTagRelationship.tagId " +
+                    "WHERE [group] = @0 " +
+                    "GROUP BY tag, id, [group] " +
+                    "ORDER BY tag",
+                    groupName);
 
-                        if (content != null)
-                        {
-                            if (!string.IsNullOrWhiteSpace(content.Name))
-                            {
-                                var document = new TaggedDocument
-                                {
-                                    DocumentId = result.DocumentId,
-                                    DocumentName = content.Name,
-                                    DocumentUrl = $"/umbraco/section/content/workspace/document/edit/{content.Key}"
-                                };
-                                docs.Add(document);
-                            }
-                        }
-                    }
-                    scope.Complete();
-                }
+                var tags = scope.Database.Fetch<dynamic>(query);
+
+                scope.Complete();
+                return Ok(tags);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error in GetTaggedDocumentNodeIds:");
+                _logger.LogError(ex, "Error retrieving tags for group '{GroupName}'", groupName);
+                return StatusCode(500, "An error occurred while retrieving tags.");
             }
-            return docs;
         }
-
-        public List<TaggedMedia> GetTaggedMediaNodeIds(int tagId)
-        {
-
-            var medias = new List<TaggedMedia>();
-
-            try
-            {
-                var query = new Sql().Select("nodeId as DocumentId").From("cmsTagRelationship").Where(
-                    $"tagID = {tagId}");
-
-                using (var scope = _scopeProvider.CreateScope())
-                {
-                    var results = scope.Database.Fetch<TaggedDocument>(query);
-                    foreach (var result in results)
-                    {
-                        var mediaService = _mediaService; 
-                        var media = mediaService.GetById(result.DocumentId);
-
-                        if (media != null)
-                        {
-                            if (!string.IsNullOrWhiteSpace(media.Name))
-                            {
-                                var taggedMedia = new TaggedMedia
-                                {
-                                    DocumentId = result.DocumentId,
-                                    DocumentName = media.Name,
-                                    DocumentUrl = $"/umbraco/section/media/workspace/media/edit/{media.Key}"
-                                };
-                                medias.Add(taggedMedia);
-                            }
-                        }
-                    }
-                    scope.Complete();
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error in GetTaggedMediaNodeIds:");
-            }
-
-            return medias;
-        }
-
-        public int MoveTaggedNodes(int currentTagId, int newTagId)
-        {
-            var success = 0;
-
-            try
-            {
-                using (var scope = _scopeProvider.CreateScope())
-                {
-                    success = scope.Database.Execute("Update cmsTagRelationship SET tagID = @1 WHERE tagID = @0 AND nodeId NOT IN (SELECT nodeId FROM cmsTagRelationship WHERE tagId = @1);", currentTagId, newTagId);
-
-                    if (success == 1)
-                    {
-                        success = scope.Database.Execute("DELETE FROM cmsTagRelationship WHERE tagId = @0;", currentTagId);
-                    }
-                    scope.Complete();
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error in MoveTaggedNodes:");
-            }
-            return success;
-        }
-
+        /// <summary>
+        /// Creates a new tag or updates an existing one.
+        /// When merging into another tag (<see cref="CmsTags.TagsInGroup"/>), tag relationships
+        /// are re-pointed and the original is cleaned up.
+        /// </summary>
         [HttpPost("save")]
         public IActionResult Save([FromBody] CmsTags tag)
         {
-            var success = 0;
+            if (tag == null)
+                return BadRequest("Tag payload is required.");
 
             try
             {
-                using (var scope = _scopeProvider.CreateScope())
-                {
-                    if (tag.Id == 0)
-                    {
-                        var existingTag = scope.Database.FirstOrDefault<CmsTags>(
-                            "SELECT * FROM cmsTags WHERE tag = @0 AND [group] = @1",
-                            tag.Tag,
-                            tag.Group);
+                using var scope = _scopeProvider.CreateScope();
 
-                        if (existingTag != null)
-                        {
-                            _logger.LogWarning($"Tag '{tag.Tag}' already exists in group '{tag.Group}'");
-                            return Ok(0); 
-                        }
+                var rowsAffected = tag.Id == 0
+                    ? CreateTag(scope, tag)
+                    : UpdateTag(scope, tag);
 
-                        var insertSql = "INSERT INTO cmsTags (tag, [group]) VALUES (@0, @1)";
-                        success = scope.Database.Execute(insertSql, tag.Tag, tag.Group);
-
-                        if (success > 0)
-                        {
-                            var newTag = scope.Database.FirstOrDefault<CmsTags>(
-                                "SELECT * FROM cmsTags WHERE tag = @0 AND [group] = @1",
-                                tag.Tag,
-                                tag.Group);
-
-                            if (newTag != null)
-                            {
-                                tag.Id = newTag.Id;
-                                _logger.LogInformation($"Created new tag with ID: {tag.Id}, Tag: {tag.Tag}, Group: {tag.Group}");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        success = scope.Database.Execute("Update cmsTags set tag = @0 where id = @1", tag.Tag, tag.Id);
-
-                        if (success == 1 && tag.TagsInGroup?.SelectedItem != null && tag.Id != tag.TagsInGroup.SelectedItem.Id)
-                        {
-                            var sqlQuery1 = string.Format("Update cmsTagRelationship SET tagID = {0} WHERE tagID = {1} AND nodeId NOT IN (SELECT nodeId FROM cmsTagRelationship WHERE tagId = {0});", tag.TagsInGroup.SelectedItem.Id, tag.Id);
-
-                            success = scope.Database.Execute(sqlQuery1);
-
-                            var sqlQuery2 = $"DELETE FROM cmsTagRelationship WHERE tagId = {tag.Id};";
-                            scope.Database.Execute(sqlQuery2);
-                        }
-
-                        UpdateDocuments(tag);
-                        UpdateMedia(tag);
-                    }
-
-                    scope.Complete();
-                }
-
+                scope.Complete();
+                return Ok(rowsAffected);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error in Save:");
+                _logger.LogError(ex, "Error saving tag '{TagName}' (ID: {TagId})", tag.Tag, tag.Id);
                 return BadRequest($"Error saving tag: {ex.Message}");
             }
-
-            return Ok(success);
         }
 
-
-        private void UpdateDocuments(CmsTags tag)
-        {
-            try
-            {
-                if (tag.TaggedDocuments.Count > 0)
-                {
-                    var contentService = _contentService;
-                    var tagService = _tagService;
-
-                    foreach (var doc in tag.TaggedDocuments)
-                    {
-                        var content = contentService.GetById(doc.DocumentId);
-
-                        foreach (var property in content.Properties)
-                        {
-                            var propertyAlias = property.Alias;
-                            var tags = tagService.GetTagsForEntity(doc.DocumentId, tag.Group);
-                            IEnumerable<string> tagList = tags.Select(x => x.Text).ToList();
-
-                            property.SetValue(tagList);
-                        }
-
-                        contentService.Save(content);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error in UpdateDocuments:");
-            }
-        }
-
-        private void UpdateMedia(CmsTags tag)
-        {
-            try
-            {
-                if (tag.TaggedMedia.Count > 0)
-                {
-                    var mediaService = _mediaService;
-                    var tagService = _tagService;
-
-                    foreach (var med in tag.TaggedMedia)
-                    {
-                        var media = mediaService.GetById(med.DocumentId);
-
-                        foreach (var property in media.Properties)
-                        {
-                            var propertyAlias = property.Alias;
-                            var tags = tagService.GetTagsForEntity(med.DocumentId, tag.Group);
-                            IEnumerable<string> tagList = tags.Select(x => x.Text).ToList();
-
-                            property.SetValue(tagList);
-                        }
-
-                        mediaService.Save(media);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error in UpdateMedia:");
-            }
-        }
+        /// <summary>
+        /// Deletes a tag and its relationships, then removes the tag value from all
+        /// associated content and media properties.
+        /// </summary>
         [HttpPost("delete")]
         public IActionResult DeleteTag([FromBody] CmsTags tag)
         {
             if (tag == null || tag.Id <= 0)
-            {
-                _logger.LogWarning("DeleteTag called with invalid tag: tag is null or Id is invalid");
-                return BadRequest("Invalid tag data. Tag ID is required.");
-            }
+                return BadRequest("A valid tag ID is required.");
 
             try
             {
-                _logger.LogInformation($"Attempting to delete tag with ID: {tag.Id}, Tag: {tag.Tag}, Group: {tag.Group}");
-
-                // Delete tag relationships first
-                int relationshipDeleted = 0;
                 using (var scope = _scopeProvider.CreateScope())
                 {
-                    var sqlQuery1 = $"DELETE FROM cmsTagRelationship WHERE tagId = {tag.Id};";
-                    relationshipDeleted = scope.Database.Execute(sqlQuery1);
+                    var relationshipsDeleted = scope.Database.Execute(
+                        "DELETE FROM cmsTagRelationship WHERE tagId = @0", tag.Id);
+
+                    _logger.LogInformation(
+                        "Deleted {Count} tag relationship(s) for tag ID {TagId}",
+                        relationshipsDeleted, tag.Id);
+
                     scope.Complete();
-                    _logger.LogInformation($"Deleted {relationshipDeleted} tag relationships for tag ID {tag.Id}");
                 }
 
-                // Delete the tag itself
-                var success = 0;
+                int rowsDeleted;
                 using (var scope = _scopeProvider.CreateScope())
                 {
-                    var sqlQuery2 = $"DELETE FROM cmsTags WHERE id = {tag.Id};";
-                    success = scope.Database.Execute(sqlQuery2);
+                    rowsDeleted = scope.Database.Execute(
+                        "DELETE FROM cmsTags WHERE id = @0", tag.Id);
+
                     scope.Complete();
-                    _logger.LogInformation($"Deleted tag with ID {tag.Id}. Rows affected: {success}");
                 }
 
-                if (success > 0)
+                if (rowsDeleted == 0)
                 {
-                    // Update documents and media that were using this tag
-                    UpdateDocuments(tag);
-                    UpdateMedia(tag);
-                }
-                else
-                {
-                    _logger.LogWarning($"No rows were deleted for tag ID {tag.Id}. Tag may not exist.");
+                    _logger.LogWarning("No tag deleted for ID {TagId} — it may not exist.", tag.Id);
+                    return NotFound($"Tag with ID {tag.Id} was not found.");
                 }
 
-                return Ok(success);
+                UpdateContentProperties(tag);
+                UpdateMediaProperties(tag);
+
+                _logger.LogInformation("Successfully deleted tag ID {TagId} ({TagName})", tag.Id, tag.Tag);
+                return Ok(rowsDeleted);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error deleting tag with ID {tag.Id}:");
+                _logger.LogError(ex, "Error deleting tag ID {TagId}", tag.Id);
                 return BadRequest($"Error deleting tag: {ex.Message}");
+            }
+        }
+
+        // -----------------------------------------------------------------------
+        // Internal Query Helpers
+        // -----------------------------------------------------------------------
+
+        private CmsTags FetchTagRow(IScope scope, int tagId)
+        {
+            var query = new Sql().Select(
+                "id, tag, [group], propertytypeid, " +
+                "COUNT(tagId) AS noTaggedNodes " +
+                "FROM cmsTags " +
+                "LEFT JOIN cmsTagRelationship ON cmsTags.id = cmsTagRelationship.tagId " +
+                $"WHERE cmsTags.Id = {tagId} " +
+                "GROUP BY tag, id, [group], propertytypeid");
+
+            return scope.Database.Fetch<CmsTags>(query).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Returns a <see cref="TagInGroup"/> representing all tags in the same group
+        /// as the given tag ID, with the matching tag pre-selected.
+        /// </summary>
+        private TagInGroup GetTagsInGroupForTag(int tagId)
+        {
+            var result = new TagInGroup();
+
+            try
+            {
+                using var scope = _scopeProvider.CreateScope();
+
+                var groupName = scope.Database.Single<string>(
+                    new Sql().Select($"[group] FROM cmsTags WHERE id = {tagId}"));
+
+                var rows = scope.Database.Fetch<dynamic>(
+                    new Sql().Select($"id, tag FROM cmsTags WHERE [group] = '{groupName}' ORDER BY tag"));
+
+                var options = new List<PlainPair>();
+                foreach (var row in rows)
+                {
+                    var pair = new PlainPair { Id = Convert.ToInt32(row.Id), Tag = row.Tag };
+                    options.Add(pair);
+                    if (row.Id == tagId)
+                        result.SelectedItem = pair;
+                }
+
+                result.Options = options;
+                scope.Complete();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error building tag-in-group list for tag ID {TagId}", tagId);
+            }
+
+            return result;
+        }
+
+        private List<TaggedDocument> GetTaggedDocumentNodeIds(int tagId)
+        {
+            var documents = new List<TaggedDocument>();
+
+            try
+            {
+                using var scope = _scopeProvider.CreateScope();
+
+                var nodeIds = scope.Database.Fetch<dynamic>(
+                    new Sql().Select("nodeId AS DocumentId").From("cmsTagRelationship")
+                             .Where($"tagID = {tagId}"));
+
+                foreach (var row in nodeIds)
+                {
+                    var content = _contentService.GetById((int)row.DocumentId);
+                    if (content == null || string.IsNullOrWhiteSpace(content.Name))
+                        continue;
+
+                    documents.Add(new TaggedDocument
+                    {
+                        DocumentId = (int)row.DocumentId,
+                        DocumentName = content.Name,
+                        DocumentUrl = $"/umbraco/section/content/workspace/document/edit/{content.Key}"
+                    });
+                }
+
+                scope.Complete();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving tagged documents for tag ID {TagId}", tagId);
+            }
+
+            return documents;
+        }
+
+        private List<TaggedMedia> GetTaggedMediaNodeIds(int tagId)
+        {
+            var mediaItems = new List<TaggedMedia>();
+
+            try
+            {
+                using var scope = _scopeProvider.CreateScope();
+
+                var nodeIds = scope.Database.Fetch<dynamic>(
+                    new Sql().Select("nodeId AS DocumentId").From("cmsTagRelationship")
+                             .Where($"tagID = {tagId}"));
+
+                foreach (var row in nodeIds)
+                {
+                    var media = _mediaService.GetById((int)row.DocumentId);
+                    if (media == null || string.IsNullOrWhiteSpace(media.Name))
+                        continue;
+
+                    mediaItems.Add(new TaggedMedia
+                    {
+                        DocumentId = (int)row.DocumentId,
+                        DocumentName = media.Name,
+                        DocumentUrl = $"/umbraco/section/media/workspace/media/edit/{media.Key}"
+                    });
+                }
+
+                scope.Complete();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving tagged media for tag ID {TagId}", tagId);
+            }
+
+            return mediaItems;
+        }
+
+        // -----------------------------------------------------------------------
+        // Save Helpers
+        // -----------------------------------------------------------------------
+
+        /// <summary>
+        /// Inserts a new tag. Returns 0 if the tag already exists, otherwise 1.
+        /// Populates <paramref name="tag"/>.Id with the newly created record's ID.
+        /// </summary>
+        private int CreateTag(IScope scope, CmsTags tag)
+        {
+            var existing = scope.Database.FirstOrDefault<CmsTags>(
+                "SELECT * FROM cmsTags WHERE tag = @0 AND [group] = @1", tag.Tag, tag.Group);
+
+            if (existing != null)
+            {
+                _logger.LogWarning(
+                    "Tag '{TagName}' already exists in group '{Group}' — skipping insert",
+                    tag.Tag, tag.Group);
+                return 0;
+            }
+
+            var rows = scope.Database.Execute(
+                "INSERT INTO cmsTags (tag, [group]) VALUES (@0, @1)", tag.Tag, tag.Group);
+
+            if (rows > 0)
+            {
+                var created = scope.Database.FirstOrDefault<CmsTags>(
+                    "SELECT * FROM cmsTags WHERE tag = @0 AND [group] = @1", tag.Tag, tag.Group);
+
+                if (created != null)
+                {
+                    tag.Id = created.Id;
+                    _logger.LogInformation(
+                        "Created tag ID {TagId} — '{TagName}' in group '{Group}'",
+                        tag.Id, tag.Tag, tag.Group);
+                }
+            }
+
+            return rows;
+        }
+
+        /// <summary>
+        /// Updates an existing tag's name, optionally merging it into another tag.
+        /// Then synchronises property values on all related content and media nodes.
+        /// </summary>
+        private int UpdateTag(IScope scope, CmsTags tag)
+        {
+            var oldTag = scope.Database.FirstOrDefault<CmsTags>(
+                "SELECT * FROM cmsTags WHERE id = @0", tag.Id);
+
+            var oldTagName = oldTag?.Tag ?? string.Empty;
+
+            var rows = scope.Database.Execute(
+                "UPDATE cmsTags SET tag = @0 WHERE id = @1", tag.Tag, tag.Id);
+
+            bool isMerging = rows == 1
+                && tag.TagsInGroup?.SelectedItem != null
+                && tag.Id != tag.TagsInGroup.SelectedItem.Id;
+
+            if (isMerging)
+            {
+                var targetId = tag.TagsInGroup.SelectedItem.Id;
+
+                scope.Database.Execute(
+                    "UPDATE cmsTagRelationship " +
+                    "SET tagID = @0 " +
+                    "WHERE tagID = @1 " +
+                    "AND nodeId NOT IN (SELECT nodeId FROM cmsTagRelationship WHERE tagId = @0)",
+                    targetId, tag.Id);
+
+                scope.Database.Execute(
+                    "DELETE FROM cmsTagRelationship WHERE tagId = @0", tag.Id);
+
+                _logger.LogInformation(
+                    "Merged tag ID {SourceId} into tag ID {TargetId}", tag.Id, targetId);
+            }
+
+            UpdateContentProperties(tag, oldTagName);
+            UpdateMediaProperties(tag, oldTagName);
+
+            return rows;
+        }
+
+        // -----------------------------------------------------------------------
+        // Property Update Helpers
+        // -----------------------------------------------------------------------
+
+        /// <summary>
+        /// Iterates all tagged content nodes and updates the tag property value
+        /// to reflect the renamed or removed tag.
+        /// </summary>
+        private void UpdateContentProperties(CmsTags tag, string oldTagName = "")
+        {
+            if (tag.TaggedDocuments == null || tag.TaggedDocuments.Count == 0)
+                return;
+
+            foreach (var doc in tag.TaggedDocuments)
+            {
+                try
+                {
+                    var content = _contentService.GetById(doc.DocumentId);
+                    if (content == null) continue;
+
+                    var currentTags = GetCurrentTagTexts(doc.DocumentId, tag.Group);
+                    ApplyTagUpdatesToProperties(content.Properties, tag, oldTagName, currentTags);
+                    _contentService.Save(content);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex,
+                        "Error updating content node {DocumentId} for tag {TagId}",
+                        doc.DocumentId, tag.Id);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Iterates all tagged media nodes and updates the tag property value
+        /// to reflect the renamed or removed tag.
+        /// </summary>
+        private void UpdateMediaProperties(CmsTags tag, string oldTagName = "")
+        {
+            if (tag.TaggedMedia == null || tag.TaggedMedia.Count == 0)
+                return;
+
+            foreach (var med in tag.TaggedMedia)
+            {
+                try
+                {
+                    var media = _mediaService.GetById(med.DocumentId);
+                    if (media == null) continue;
+
+                    var currentTags = GetCurrentTagTexts(med.DocumentId, tag.Group);
+                    ApplyTagUpdatesToProperties(media.Properties, tag, oldTagName, currentTags);
+                    _mediaService.Save(media);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex,
+                        "Error updating media node {DocumentId} for tag {TagId}",
+                        med.DocumentId, tag.Id);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns the current tag texts for a given entity and group.
+        /// Fetched once per entity and shared across all property iterations.
+        /// </summary>
+        private List<string> GetCurrentTagTexts(int entityId, string group)
+        {
+            return _tagService
+                .GetTagsForEntity(entityId, group)
+                ?.Select(t => t.Text)
+                .ToList()
+                ?? new List<string>();
+        }
+
+        /// <summary>
+        /// Iterates an entity's properties and updates any tag picker properties
+        /// that belong to the tag being modified.
+        /// </summary>
+        private void ApplyTagUpdatesToProperties(
+            IEnumerable<IProperty> properties,
+            CmsTags tag,
+            string oldTagName,
+            List<string> currentTags)
+        {
+            foreach (var property in properties)
+            {
+                if (!IsTagProperty(property, tag, currentTags))
+                    continue;
+
+                SetUpdatedTagValue(property, tag, oldTagName, currentTags);
+            }
+        }
+
+        /// <summary>
+        /// Determines whether a property should be updated.
+        ///
+        /// A property qualifies if:
+        ///   1. Its PropertyType.Id matches the tag's stored PropertyTypeId (most precise), OR
+        ///   2. Its editor alias is a known tag editor AND the entity has tags in the relevant group.
+        ///
+        /// The <paramref name="currentTags"/> list is passed in to avoid a repeated DB call
+        /// per property on the same entity.
+        /// </summary>
+        private static bool IsTagProperty(IProperty property, CmsTags tag, List<string> currentTags)
+        {
+            var propertyType = property.PropertyType;
+            if (propertyType == null)
+                return false;
+
+            if (tag.PropertyTypeId > 0 && propertyType.Id == tag.PropertyTypeId)
+                return true;
+
+            var editorAlias = propertyType.PropertyEditorAlias;
+            if (string.IsNullOrEmpty(editorAlias) || !TagEditorAliases.Contains(editorAlias))
+                return false;
+
+            return currentTags.Count > 0;
+        }
+
+        /// <summary>
+        /// Sets the updated value on a tag property.
+        ///
+        /// Strategy:
+        ///   - If the old name is known and present in the stored string, do a targeted replace
+        ///     (preserves ordering and avoids a full rewrite).
+        ///   - Otherwise fall back to writing the full current tag list from the database,
+        ///     which is the authoritative source of truth.
+        /// </summary>
+        private static void SetUpdatedTagValue(
+            IProperty property,
+            CmsTags tag,
+            string oldTagName,
+            List<string> currentTags)
+        {
+            var currentValue = property.GetValue()?.ToString() ?? string.Empty;
+
+            bool canDoTargetedReplace = !string.IsNullOrEmpty(oldTagName)
+                && currentValue.Contains(oldTagName, StringComparison.OrdinalIgnoreCase);
+
+            if (canDoTargetedReplace)
+            {
+                var updated = currentValue.Replace(oldTagName, tag.Tag, StringComparison.OrdinalIgnoreCase);
+                property.SetValue(updated);
+            }
+            else
+            {
+                property.SetValue(currentTags.Any() ? string.Join(",", currentTags) : string.Empty);
             }
         }
     }

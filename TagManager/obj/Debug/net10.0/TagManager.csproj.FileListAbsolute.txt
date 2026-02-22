@@ -240,3 +240,4 @@ D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\9gl9yvpsix-{0}-qn6q5phiec-
 D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\f1the5etru-{0}-h64yr1m1o2-h64yr1m1o2.gz
 D:\Tagmanager\TagManager\obj\Debug\net10.0\compressed\sr4kj79d2f-{0}-fv5t1c0ajb-fv5t1c0ajb.gz
 D:\Tagmanager\TagManager\obj\Debug\net10.0\TagManager.sourcelink.json
+D:\Tagmanager\TagManager\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

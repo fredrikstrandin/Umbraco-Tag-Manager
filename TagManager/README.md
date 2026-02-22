@@ -13,7 +13,7 @@ For V13 websites, use our previous version: [Umbraco 13 Tag Manager](https://www
 
 ## Screenshot
 
-Here�s a quick look at how it appears in the Umbraco backoffice:
+Here's a quick look at how it appears in the Umbraco backoffice:
 
 ![Screenshot](https://raw.githubusercontent.com/ZAAKS/Umbraco-Tag-Manager/main/screenshot/TagManager.png)
 
