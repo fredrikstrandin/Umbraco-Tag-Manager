@@ -1,61 +1,57 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ContentTargetFolders>.</ContentTargetFolders>
-    <Product>TagManager</Product>
-    <PackageId>TagManager</PackageId>
-    <Title>TagManager</Title>
-	  <Description>
-		  This package has been developed to provide a standard "Umbraco" interface to manage tags within your site.
-	  </Description>
-	  <PackageTags>umbraco plugin package,umbraco-marketplace</PackageTags>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-	  <Version>17.0.0</Version>
-	  <Company>ZAAKS!</Company>
-	  <Authors>ZAAKS!</Authors>    
-    <!-- NuGet Package Properties -->
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	  <Copyright>$([System.DateTime]::Now.Year) © $(Authors)</Copyright>
-	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Product>TagManager</Product>
+		<PackageId>TagManager</PackageId>
+		<Title>TagManager</Title>
+		<Description>
+			This package has been developed to provide a standard "Umbraco" interface to manage tags within your site.
+		</Description>
+		<PackageTags>umbraco plugin package,umbraco-marketplace</PackageTags>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Version>17.0.3</Version>
+		<Company>ZAAKS!</Company>
+		<Authors>ZAAKS!</Authors>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Copyright>$([System.DateTime]::Now.Year) © $(Authors)</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 
-  <PropertyGroup>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PackageIcon>icon.png</PackageIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/ZAAKS/Umbraco-Tag-Manager</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-  </PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/ZAAKS/Umbraco-Tag-Manager</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<StaticWebAssetBasePath>/</StaticWebAssetBasePath>
 
-  <ItemGroup>
-	  <PackageReference Include="Umbraco.Cms.Api.Management" Version="17.0.0" />
-	  <PackageReference Include="Umbraco.Cms.Web.Website" Version="*" />
-	  <PackageReference Include="Umbraco.Cms.Web.Common" Version="*" />
-	  <PackageReference Include="Umbraco.Cms.Api.Common" Version="*" />
-  </ItemGroup>
+	</PropertyGroup>
 
-
-  <!-- Include the build targets file -->
-  <ItemGroup>
-    <None Include="buildTransitive\TagManager.targets" Pack="true" PackagePath="build\TagManager.targets" />
-    <None Include="buildTransitive\TagManager.targets" Pack="true" PackagePath="buildTransitive\TagManager.targets" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="icon.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Update="README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
 	<ItemGroup>
-		<None Include="readme.txt" Pack="true" PackagePath="/" />
+		<PackageReference Include="Umbraco.Cms.Api.Management" Version="17.0.0" />
+		<PackageReference Include="Umbraco.Cms.Web.Website" Version="17.0.0" />
+		<PackageReference Include="Umbraco.Cms.Web.Common" Version="17.0.0" />
+		<PackageReference Include="Umbraco.Cms.Api.Common" Version="17.0.0" />
 	</ItemGroup>
+	
 	<ItemGroup>
-	  <Folder Include="wwwroot\" />
+		<Folder Include="wwwroot\App_Plugins\TagManager\" />
+		<None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+		
 	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Dont include the client folder as part of packaging nuget build -->
+		<Content Remove="Client\**" />
+
+		<!-- However make the Umbraco-package.json included for dotnet pack or nuget package and visible to the solution -->
+		<None Include="Client\public\umbraco-package.json" Pack="false" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="icon.png" Pack="true" PackagePath="\" />
+		<None Include="README.md" Pack="true" PackagePath="\" />
+		<None Include="readme.txt" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
 </Project>

@@ -14,7 +14,7 @@
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)microsoft.extensions.telemetry.abstractions\10.0.0\buildTransitive\net8.0\Microsoft.Extensions.Telemetry.Abstractions.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.telemetry.abstractions\10.0.0\buildTransitive\net8.0\Microsoft.Extensions.Telemetry.Abstractions.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.telemetry.abstractions\9.9.0\buildTransitive\net8.0\Microsoft.Extensions.Telemetry.Abstractions.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.telemetry.abstractions\9.9.0\buildTransitive\net8.0\Microsoft.Extensions.Telemetry.Abstractions.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgLucene_Net Condition=" '$(PkgLucene_Net)' == '' ">C:\Users\bisha\.nuget\packages\lucene.net\4.8.0-beta00017</PkgLucene_Net>

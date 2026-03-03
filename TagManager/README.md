@@ -36,5 +36,4 @@ The tree is split into separate branches for each tag group created, which is us
 - Ability to move all tagged nodes to another tag - useful in cases of spelling mistakes, cleaning up tags, etc.
 - Links to content where the tag is used.
 - The ability to create new tags
-- The ability to search and filter tags
 

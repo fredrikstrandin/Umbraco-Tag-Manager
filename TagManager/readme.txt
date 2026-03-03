@@ -15,5 +15,5 @@ Thanks for installing Tag Manager.
 
 -------------------------------------------------------------------------------------
 
-Here is the link to the GitHub project https://github.com/usome/UmbracoTagManager
+Here is the link to the GitHub project https://github.com/ZAAKS/Umbraco-Tag-Manager
 -------------------------------------------------------------------------------------

@@ -4,7 +4,7 @@
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/index-Rn3L9kqK.js</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -12,19 +12,19 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>9flcsws065</Fingerprint>
-      <Integrity>iyy1WpvDSU3EGfWG2PnjSTs4MeFqe0Cfh7OP43KZK94=</Integrity>
+      <Fingerprint>bflhjx6vph</Fingerprint>
+      <Integrity>SUJcZ62Nq0mOxtaHk8sRJc43mu1p7hYmKwJHY6OB6Hg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>3951</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <FileLength>4127</FileLength>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\index-Rn3L9kqK.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\index-Rn3L9kqK.js.map'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/index-Rn3L9kqK.js.map</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -37,14 +37,14 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <FileLength>7864</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\index-Rn3L9kqK.js.map'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-create-modal.element-BtPKIxQX.js'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tag-create-modal.element-BtPKIxQX.js</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -52,19 +52,19 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>45js4vszmm</Fingerprint>
-      <Integrity>6C87CYux6Aw5ue02FAcAjAoxDVx0/e6gtJQmsvHoGXs=</Integrity>
+      <Fingerprint>03f06lel5i</Fingerprint>
+      <Integrity>XKZEsV8gAV5za1Y8sHu/azK1w/zQkoT+mveL+L55ZtA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>4522</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <FileLength>4677</FileLength>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-create-modal.element-BtPKIxQX.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-create-modal.element-BtPKIxQX.js.map'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tag-create-modal.element-BtPKIxQX.js.map</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -77,14 +77,14 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <FileLength>7440</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-create-modal.element-BtPKIxQX.js.map'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-edit-view.element-ebg-NY6y.js'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tag-edit-view.element-ebg-NY6y.js</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -92,19 +92,19 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>b3kfys13o3</Fingerprint>
-      <Integrity>icqVw6Qs/QCLfJuTEv8rQOr+G9cu0l7hSVCtkKF8Qg4=</Integrity>
+      <Fingerprint>spae0hx1h7</Fingerprint>
+      <Integrity>wGGrIB9144kRxIt17yYv7fi11yCk7bb7gi2hyAUm/BA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>13601</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <FileLength>14077</FileLength>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-edit-view.element-ebg-NY6y.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-edit-view.element-ebg-NY6y.js.map'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tag-edit-view.element-ebg-NY6y.js.map</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -117,14 +117,14 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <FileLength>23518</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-edit-view.element-ebg-NY6y.js.map'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-group-workspace.element-CgEaFPnn.js'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tag-group-workspace.element-CgEaFPnn.js</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -132,19 +132,19 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>sa97zgzovr</Fingerprint>
-      <Integrity>LGLf7Y7IZpC+WXw24AFxnXBzvXTC30HmECPgIxxNvJw=</Integrity>
+      <Fingerprint>lvyp5j4flh</Fingerprint>
+      <Integrity>0c03rn3aHVZvFFKHEzsGfVds19GBCW+Hio/HQ5IsiJc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>8765</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <FileLength>9108</FileLength>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-group-workspace.element-CgEaFPnn.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-group-workspace.element-CgEaFPnn.js.map'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tag-group-workspace.element-CgEaFPnn.js.map</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -157,14 +157,14 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <FileLength>14557</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-group-workspace.element-CgEaFPnn.js.map'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-workspace.element-B-1W5B64.js'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tag-workspace.element-B-1W5B64.js</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -172,19 +172,19 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>o0x7wycf9n</Fingerprint>
-      <Integrity>GPW8nL44g9yiYmGg/LbOzj+yuaVKK4WXnu6bKyTELk8=</Integrity>
+      <Fingerprint>apf8117vp3</Fingerprint>
+      <Integrity>fnYyY2SvmD4l2ZTklzUpSkFt1lN3zymGxpmUFiucDKE=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>748</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <FileLength>773</FileLength>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-workspace.element-B-1W5B64.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-workspace.element-B-1W5B64.js.map'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tag-workspace.element-B-1W5B64.js.map</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -197,14 +197,14 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <FileLength>988</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tag-workspace.element-B-1W5B64.js.map'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager.js'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tagmanager.js</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -212,19 +212,19 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>fv5t1c0ajb</Fingerprint>
-      <Integrity>+5M77JE9aBJ6K9PX+oaxKgKMQ9MJxuGcKRS18T6ksOw=</Integrity>
+      <Fingerprint>pitec9iwic</Fingerprint>
+      <Integrity>8fzG1ZCYdM5gOpRvPuBBDPZynBN6hz9kk4h/ej4+PPE=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>111</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <FileLength>116</FileLength>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager-dashboard.element-B8lxsSW7.js'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tagmanager-dashboard.element-B8lxsSW7.js</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -232,19 +232,19 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>qls2dd2yzn</Fingerprint>
-      <Integrity>Th5rN2WenKBd7jUdAsRpbftA/RU/hO2Fly1DTshql+Y=</Integrity>
+      <Fingerprint>8vfihdv0yo</Fingerprint>
+      <Integrity>1BWQhQZDbvoNYI/SHCVPkFfPUQOouzMYtu9soQ7e4qU=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>4020</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <FileLength>4137</FileLength>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager-dashboard.element-B8lxsSW7.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager-dashboard.element-B8lxsSW7.js.map'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tagmanager-dashboard.element-B8lxsSW7.js.map</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -257,14 +257,14 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <FileLength>5125</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager-dashboard.element-B8lxsSW7.js.map'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager-repository-BvW2JE0F.js'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tagmanager-repository-BvW2JE0F.js</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -272,19 +272,19 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>qmuvvoezfg</Fingerprint>
-      <Integrity>0isVGt1ZyIM5NYKnqhJc6UJxjGdY68kkFSaMQ6Nffmw=</Integrity>
+      <Fingerprint>mjikmcl7ja</Fingerprint>
+      <Integrity>Hs/SLI4VnUCsrzyKHLOktXj2Qv/+wwTSy8E7CiIP3BI=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>2500</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <FileLength>2600</FileLength>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager-repository-BvW2JE0F.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager-repository-BvW2JE0F.js.map'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tagmanager-repository-BvW2JE0F.js.map</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -297,14 +297,14 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <FileLength>5923</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager-repository-BvW2JE0F.js.map'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager-tree.repository-BAOfQlRx.js'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tagmanager-tree.repository-BAOfQlRx.js</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -312,19 +312,19 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>qn6q5phiec</Fingerprint>
-      <Integrity>yqLE0D/HMCes710HjIEYq8nPUlTMdzdczwPkSi1Mx9M=</Integrity>
+      <Fingerprint>cgu3ywfb88</Fingerprint>
+      <Integrity>FLGK2GZhhNCfSiIlIj/eZlbkbKsiOTclkzCzULDn9L0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>3205</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <FileLength>3297</FileLength>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager-tree.repository-BAOfQlRx.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager-tree.repository-BAOfQlRx.js.map'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tagmanager-tree.repository-BAOfQlRx.js.map</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -337,14 +337,14 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <FileLength>7106</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager-tree.repository-BAOfQlRx.js.map'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager.js.map'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/tagmanager.js.map</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -357,14 +357,14 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <FileLength>95</FileLength>
-      <LastWriteTime>Fri, 20 Feb 2026 06:08:04 GMT</LastWriteTime>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\tagmanager.js.map'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\umbraco-package.json'))">
       <SourceType>Package</SourceType>
       <SourceId>TagManager</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/TagManager</BasePath>
+      <BasePath>/</BasePath>
       <RelativePath>App_Plugins/TagManager/umbraco-package.json</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
@@ -372,12 +372,12 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>cdbk6sry1w</Fingerprint>
-      <Integrity>kFxe9/58cftqUOWFaeEPaJTMZRQK8i1e8OaFF6hicfo=</Integrity>
+      <Fingerprint>3mjqxcem69</Fingerprint>
+      <Integrity>y7a28IpNVkA03c6osodtGchGSYKlIT3Rd5iMhKDX114=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>329</FileLength>
-      <LastWriteTime>Wed, 24 Dec 2025 20:51:16 GMT</LastWriteTime>
+      <FileLength>345</FileLength>
+      <LastWriteTime>Fri, 27 Feb 2026 06:13:04 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\App_Plugins\TagManager\umbraco-package.json'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
