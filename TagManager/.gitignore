@@ -1,0 +1,6 @@
+# TagManager class library — build output (also covered by repo root .gitignore).
+# This file keeps Visual Studio / Git scoped to this project.
+
+bin/
+obj/
+*.user

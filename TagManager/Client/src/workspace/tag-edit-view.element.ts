@@ -8,6 +8,9 @@ import type { CmsTag } from '../api/types.js';
 @customElement('tag-edit-view')
 export class TagEditViewElement extends UmbElementMixin(LitElement) {
 	private _repository: TagManagerRepository;
+	private _locationPoller: number | null = null;
+	private _lastPathname = '';
+	private _loadRequestId = 0;
 
 	@state()
 	private _tag: CmsTag | null = null;
@@ -28,22 +31,61 @@ export class TagEditViewElement extends UmbElementMixin(LitElement) {
 
 	async connectedCallback() {
 		super.connectedCallback();
-		
-		const path = window.location.pathname;
-		const matches = path.match(/\/tagmanager-tag\/edit\/(\d+)/);
-		if (matches && matches[1]) {
-			this._tagId = parseInt(matches[1]);
-			await this._loadTag();
-		} else {
-			this._loading = false;
+
+		this._lastPathname = window.location.pathname;
+		await this._syncFromLocation(this._lastPathname);
+
+		// Umbraco routing can update the URL without re-creating this view element.
+		// Poll for pathname changes so selecting different tags from the tree reloads.
+		this._locationPoller = window.setInterval(() => {
+			const current = window.location.pathname;
+			if (current !== this._lastPathname) {
+				this._lastPathname = current;
+				void this._syncFromLocation(current);
+			}
+		}, 200);
+	}
+
+	disconnectedCallback() {
+		if (this._locationPoller !== null) {
+			window.clearInterval(this._locationPoller);
+			this._locationPoller = null;
 		}
+
+		super.disconnectedCallback();
+	}
+
+	private _getTagIdFromPath(pathname: string): number | null {
+		const matches = pathname.match(/\/tagmanager-tag\/edit\/(\d+)/);
+		if (matches && matches[1]) return parseInt(matches[1]);
+		return null;
+	}
+
+	private async _syncFromLocation(pathname: string) {
+		const tagId = this._getTagIdFromPath(pathname);
+		if (!tagId) {
+			this._tagId = undefined;
+			this._tag = null;
+			this._loading = false;
+			this.requestUpdate();
+			return;
+		}
+
+		if (tagId === this._tagId && this._tag) return;
+
+		this._tagId = tagId;
+		await this._loadTag();
 	}
 
 	private async _loadTag() {
 		if (!this._tagId) return;
 
+		const requestId = ++this._loadRequestId;
 		this._loading = true;
+		this.requestUpdate();
+
 		const rawTag = await this._repository.getTagById(this._tagId);
+		if (requestId !== this._loadRequestId) return;
 		
 		if (rawTag) {
 			const tagsInGroupRaw = rawTag.tagsInGroup || rawTag.TagsInGroup;
@@ -76,8 +118,10 @@ export class TagEditViewElement extends UmbElementMixin(LitElement) {
 			this._tag = null;
 		}
 		
-		this._loading = false;
-		this.requestUpdate();
+		if (requestId === this._loadRequestId) {
+			this._loading = false;
+			this.requestUpdate();
+		}
 	}
 
 	private async _save() {

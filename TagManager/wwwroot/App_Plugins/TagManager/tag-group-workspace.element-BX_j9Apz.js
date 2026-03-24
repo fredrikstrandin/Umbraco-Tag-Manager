@@ -1,144 +1,96 @@
-import { LitElement, html, css } from '@umbraco-cms/backoffice/external/lit';
-import { customElement, state } from '@umbraco-cms/backoffice/external/lit';
-import { UmbElementMixin } from '@umbraco-cms/backoffice/element-api';
-import { UMB_MODAL_MANAGER_CONTEXT } from '@umbraco-cms/backoffice/modal';
-import { TAG_CREATE_MODAL_TOKEN } from '../modal/tag-create-modal.token.js';
-import { TagManagerRepository } from '../api/tagmanager-repository.js';
-import type { CmsTag } from '../api/types.js';
-
-@customElement('tagmanager-group-view')
-export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
-	private _repository: TagManagerRepository;
-	private _locationPoller: number | null = null;
-	private _lastPathname = '';
-	private _loadRequestId = 0;
-
-	@state()
-	private _tags: CmsTag[] = [];
-
-	@state()
-	private _loading = false;
-
-	@state()
-	private _groupName = '';
-
-	constructor() {
-		super();
-		this._repository = new TagManagerRepository(this);
-	}
-
-	async connectedCallback() {
-		super.connectedCallback();
-
-		this._lastPathname = window.location.pathname;
-		await this._syncFromLocation(this._lastPathname);
-
-		// Umbraco routing can update the URL without re-creating this view element.
-		// Poll for pathname changes so switching between tag groups always reloads.
-		this._locationPoller = window.setInterval(() => {
-			const current = window.location.pathname;
-			if (current !== this._lastPathname) {
-				this._lastPathname = current;
-				void this._syncFromLocation(current);
-			}
-		}, 200);
-	}
-
-	disconnectedCallback() {
-		if (this._locationPoller !== null) {
-			window.clearInterval(this._locationPoller);
-			this._locationPoller = null;
-		}
-
-		super.disconnectedCallback();
-	}
-
-	private _getGroupNameFromPath(pathname: string): string | null {
-		// Expected patterns:
-		// - /umbraco/section/tagmanager/workspace/tagmanager-group/edit/<groupName>/view/tags
-		// - /umbraco/section/tagmanager/workspace/tagmanager-group/<groupName>/view/tags
-		const match = pathname.match(/\/tagmanager-group\/(?:edit\/)?([^\/]+)/);
-		if (!match?.[1]) return null;
-		return decodeURIComponent(match[1]);
-	}
-
-	private async _syncFromLocation(pathname: string) {
-		const groupName = this._getGroupNameFromPath(pathname);
-		if (!groupName) {
-			this._groupName = '';
-			this._tags = [];
-			this._loading = false;
-			this.requestUpdate();
-			return;
-		}
-
-		// Reload whenever the route group changes (do not require existing tags — empty groups must still switch).
-		if (groupName === this._groupName) return;
-
-		this._groupName = groupName;
-		await this._loadTags(groupName);
-	}
-
-	private async _loadTags(groupName: string) {
-		const requestId = ++this._loadRequestId;
-
-		this._loading = true;
-		this.requestUpdate();
-
-		try {
-			const tags = await this._repository.getTagsInGroup(groupName);
-			if (requestId !== this._loadRequestId) return;
-			this._tags = tags;
-		} catch (error) {
-		} finally {
-			if (requestId === this._loadRequestId) {
-				this._loading = false;
-				this.requestUpdate();
-			}
-		}
-	}
-
-	private _handleEditTag(tag: CmsTag) {
-		const url = `/umbraco/section/tagmanager/workspace/tagmanager-tag/edit/${tag.id}`;
-		history.pushState(null, '', url);
-		window.dispatchEvent(new PopStateEvent('popstate'));
-	}
-
-	private async _createTag() {
-		const modalManager = await this.getContext(UMB_MODAL_MANAGER_CONTEXT);
-		if (!modalManager) return;
-
-		const modalContext = modalManager.open(this, TAG_CREATE_MODAL_TOKEN, {
-			data: {
-				groupName: this._groupName,
-			},
-		});
-
-		try {
-			const result = await modalContext.onSubmit();
-			if (result) {
-				await new Promise(resolve => setTimeout(resolve, 500));
-				if (this._groupName) {
-					await this._loadTags(this._groupName);
-				}
-			}
-		} catch (error) {
-		}
-	}
-
-	render() {
-		if (this._loading) {
-			return html`
+var g = Object.defineProperty;
+var h = (e, a, t) => a in e ? g(e, a, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[a] = t;
+var s = (e, a, t) => h(e, typeof a != "symbol" ? a + "" : a, t);
+import { LitElement as v, html as n, css as m, state as d, customElement as f } from "@umbraco-cms/backoffice/external/lit";
+import { UmbElementMixin as _ } from "@umbraco-cms/backoffice/element-api";
+import { UmbModalToken as x, UMB_MODAL_MANAGER_CONTEXT as b } from "@umbraco-cms/backoffice/modal";
+import { T as w } from "./tagmanager-repository-BvW2JE0F.js";
+const y = new x(
+  "TagManager.Modal.CreateTag",
+  {
+    modal: {
+      type: "sidebar",
+      size: "small"
+    }
+  }
+);
+var p = Object.defineProperty, T = Object.getOwnPropertyDescriptor, z = (e, a, t) => a in e ? p(e, a, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[a] = t, l = (e, a, t, i) => {
+  for (var o = i > 1 ? void 0 : i ? T(a, t) : a, c = e.length - 1, u; c >= 0; c--)
+    (u = e[c]) && (o = (i ? u(a, t, o) : u(o)) || o);
+  return i && o && p(a, t, o), o;
+}, N = (e, a, t) => z(e, a + "", t);
+let r = class extends _(v) {
+  constructor() {
+    super();
+    s(this, "_repository");
+    s(this, "_locationPoller", null);
+    s(this, "_lastPathname", "");
+    s(this, "_loadRequestId", 0);
+    s(this, "_tags", []);
+    s(this, "_loading", !1);
+    s(this, "_groupName", "");
+    this._repository = new w(this);
+  }
+  async connectedCallback() {
+    super.connectedCallback(), this._lastPathname = window.location.pathname, await this._syncFromLocation(this._lastPathname), this._locationPoller = window.setInterval(() => {
+      const a = window.location.pathname;
+      a !== this._lastPathname && (this._lastPathname = a, this._syncFromLocation(a));
+    }, 200);
+  }
+  disconnectedCallback() {
+    this._locationPoller !== null && (window.clearInterval(this._locationPoller), this._locationPoller = null), super.disconnectedCallback();
+  }
+  _getGroupNameFromPath(a) {
+    const t = a.match(/\/tagmanager-group\/(?:edit\/)?([^\/]+)/);
+    return t != null && t[1] ? decodeURIComponent(t[1]) : null;
+  }
+  async _syncFromLocation(a) {
+    const t = this._getGroupNameFromPath(a);
+    if (!t) {
+      this._groupName = "", this._tags = [], this._loading = !1, this.requestUpdate();
+      return;
+    }
+    t !== this._groupName && (this._groupName = t, await this._loadTags(t));
+  }
+  async _loadTags(a) {
+    const t = ++this._loadRequestId;
+    this._loading = !0, this.requestUpdate();
+    try {
+      const i = await this._repository.getTagsInGroup(a);
+      if (t !== this._loadRequestId) return;
+      this._tags = i;
+    } catch {
+    } finally {
+      t === this._loadRequestId && (this._loading = !1, this.requestUpdate());
+    }
+  }
+  _handleEditTag(a) {
+    const t = `/umbraco/section/tagmanager/workspace/tagmanager-tag/edit/${a.id}`;
+    history.pushState(null, "", t), window.dispatchEvent(new PopStateEvent("popstate"));
+  }
+  async _createTag() {
+    const a = await this.getContext(b);
+    if (!a) return;
+    const t = a.open(this, y, {
+      data: {
+        groupName: this._groupName
+      }
+    });
+    try {
+      await t.onSubmit() && (await new Promise((o) => setTimeout(o, 500)), this._groupName && await this._loadTags(this._groupName));
+    } catch {
+    }
+  }
+  render() {
+    if (this._loading)
+      return n`
 				<div class="loading-container">
 					<uui-loader></uui-loader>
 					<p>Loading tags...</p>
 				</div>
 			`;
-		}
-
-		const totalUsage = this._tags.reduce((sum, tag) => sum + (tag.noTaggedNodes || tag.NoTaggedNodes || 0), 0);
-
-		return html`
+    const a = this._tags.reduce((t, i) => t + (i.noTaggedNodes || i.NoTaggedNodes || 0), 0);
+    return n`
 			<div class="tag-container">
 				<uui-box class="header-box">
 					<div class="header-content">
@@ -170,7 +122,7 @@ export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
 									<uui-icon name="icon-files"></uui-icon>
 								</div>
 								<div class="stat-content">
-									<div class="stat-value">${totalUsage}</div>
+									<div class="stat-value">${a}</div>
 									<div class="stat-label">Total Uses</div>
 								</div>
 							</div>
@@ -179,7 +131,7 @@ export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
 									<uui-icon name="icon-chart"></uui-icon>
 								</div>
 								<div class="stat-content">
-									<div class="stat-value">${this._tags.length > 0 ? Math.round(totalUsage / this._tags.length) : 0}</div>
+									<div class="stat-value">${this._tags.length > 0 ? Math.round(a / this._tags.length) : 0}</div>
 									<div class="stat-label">Avg per Tag</div>
 								</div>
 							</div>
@@ -187,34 +139,31 @@ export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
 					</div>
 				</uui-box>
 
-				${this._tags.length === 0
-					? html`
+				${this._tags.length === 0 ? n`
 							<div class="empty-state">
 								<uui-icon name="icon-tag"></uui-icon>
 								<p>No tags in this group</p>
 							</div>
-					  `
-					: html`
+					  ` : n`
 							<uui-box headline="All Tags">
 								<div class="tag-grid">
-									${this._tags.map((tag) => html`
+									${this._tags.map((t) => n`
 										<uui-card-content-node
-											name="${tag.tag || tag.Tag || ''}"
-											@click=${() => this._handleEditTag(tag)}>
+											name="${t.tag || t.Tag || ""}"
+											@click=${() => this._handleEditTag(t)}>
 											<uui-icon slot="icon" name="icon-tag"></uui-icon>
 											<div slot="info">
 												<div class="tag-info">
 													<uui-icon name="icon-files"></uui-icon>
-													${tag.noTaggedNodes || tag.NoTaggedNodes || 0} uses
+													${t.noTaggedNodes || t.NoTaggedNodes || 0} uses
 												</div>
 											</div>
 											<uui-action-bar slot="actions">
 												<uui-button
 													label="Edit"
-													@click=${(e: Event) => {
-														e.stopPropagation();
-														this._handleEditTag(tag);
-													}}>
+													@click=${(i) => {
+      i.stopPropagation(), this._handleEditTag(t);
+    }}>
 													<uui-icon name="icon-edit"></uui-icon>
 												</uui-button>
 											</uui-action-bar>
@@ -225,9 +174,9 @@ export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
 					  `}
 			</div>
 		`;
-	}
-
-	static styles = css`
+  }
+};
+N(r, "styles", m`
 		:host {
 			display: block;
 			padding: var(--uui-size-space-6);
@@ -396,8 +345,22 @@ export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
 			transform: translateY(-2px);
 			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 		}
-	`;
-}
-
-export default TagManagerGroupViewElement;
-
+	`);
+l([
+  d()
+], r.prototype, "_tags", 2);
+l([
+  d()
+], r.prototype, "_loading", 2);
+l([
+  d()
+], r.prototype, "_groupName", 2);
+r = l([
+  f("tagmanager-group-view")
+], r);
+const I = r;
+export {
+  r as TagManagerGroupViewElement,
+  I as default
+};
+//# sourceMappingURL=tag-group-workspace.element-BX_j9Apz.js.map

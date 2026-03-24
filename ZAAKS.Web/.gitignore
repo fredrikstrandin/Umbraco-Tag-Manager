@@ -37,6 +37,10 @@ bld/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
+# TagManager backoffice assets come from the TagManager.csproj project reference only.
+# Copying them here duplicates static web assets and breaks the build.
+wwwroot/App_Plugins/TagManager/
+
 # Visual Studio 2017 auto generated files
 Generated\ Files/
 

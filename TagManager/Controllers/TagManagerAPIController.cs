@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Asp.Versioning;
@@ -185,6 +185,30 @@ namespace Umbraco_Tag_Manager.Controllers
 
             try
             {
+                CmsTags? tagRow;
+                using (var scope = _scopeProvider.CreateScope())
+                {
+                    tagRow = FetchTagRow(scope, tag.Id);
+                    scope.Complete();
+                }
+
+                if (tagRow == null)
+                {
+                    _logger.LogWarning("No tag found for ID {TagId} — cannot delete.", tag.Id);
+                    return NotFound($"Tag with ID {tag.Id} was not found.");
+                }
+
+                // Use database row so group, label, and property type are correct for property sync.
+                tag.Tag = tagRow.Tag;
+                tag.Group = tagRow.Group;
+                tag.PropertyTypeId = tagRow.PropertyTypeId;
+
+                // Resolve affected nodes while cmsTagRelationship rows still exist.
+                tag.TaggedDocuments = GetTaggedDocumentNodeIds(tag.Id);
+                tag.TaggedMedia = GetTaggedMediaNodeIds(tag.Id);
+
+                var removedTagLabel = tag.Tag ?? string.Empty;
+
                 using (var scope = _scopeProvider.CreateScope())
                 {
                     var relationshipsDeleted = scope.Database.Execute(
@@ -212,10 +236,11 @@ namespace Umbraco_Tag_Manager.Controllers
                     return NotFound($"Tag with ID {tag.Id} was not found.");
                 }
 
-                UpdateContentProperties(tag);
-                UpdateMediaProperties(tag);
+                // After relationships are removed, ITagService no longer lists this tag — refresh stored property values.
+                UpdateContentProperties(tag, oldTagName: string.Empty, removedTagTextForCleanup: removedTagLabel);
+                UpdateMediaProperties(tag, oldTagName: string.Empty, removedTagTextForCleanup: removedTagLabel);
 
-                _logger.LogInformation("Successfully deleted tag ID {TagId} ({TagName})", tag.Id, tag.Tag);
+                _logger.LogInformation("Successfully deleted tag ID {TagId} ({TagName})", tag.Id, removedTagLabel);
                 return Ok(rowsDeleted);
             }
             catch (Exception ex)
@@ -443,7 +468,10 @@ namespace Umbraco_Tag_Manager.Controllers
         /// Iterates all tagged content nodes and updates the tag property value
         /// to reflect the renamed or removed tag.
         /// </summary>
-        private void UpdateContentProperties(CmsTags tag, string oldTagName = "")
+        private void UpdateContentProperties(
+            CmsTags tag,
+            string oldTagName = "",
+            string? removedTagTextForCleanup = null)
         {
             if (tag.TaggedDocuments == null || tag.TaggedDocuments.Count == 0)
                 return;
@@ -456,7 +484,12 @@ namespace Umbraco_Tag_Manager.Controllers
                     if (content == null) continue;
 
                     var currentTags = GetCurrentTagTexts(doc.DocumentId, tag.Group);
-                    ApplyTagUpdatesToProperties(content.Properties, tag, oldTagName, currentTags);
+                    ApplyTagUpdatesToProperties(
+                        content.Properties,
+                        tag,
+                        oldTagName,
+                        currentTags,
+                        removedTagTextForCleanup);
                     _contentService.Save(content);
                 }
                 catch (Exception ex)
@@ -472,7 +505,10 @@ namespace Umbraco_Tag_Manager.Controllers
         /// Iterates all tagged media nodes and updates the tag property value
         /// to reflect the renamed or removed tag.
         /// </summary>
-        private void UpdateMediaProperties(CmsTags tag, string oldTagName = "")
+        private void UpdateMediaProperties(
+            CmsTags tag,
+            string oldTagName = "",
+            string? removedTagTextForCleanup = null)
         {
             if (tag.TaggedMedia == null || tag.TaggedMedia.Count == 0)
                 return;
@@ -485,7 +521,12 @@ namespace Umbraco_Tag_Manager.Controllers
                     if (media == null) continue;
 
                     var currentTags = GetCurrentTagTexts(med.DocumentId, tag.Group);
-                    ApplyTagUpdatesToProperties(media.Properties, tag, oldTagName, currentTags);
+                    ApplyTagUpdatesToProperties(
+                        media.Properties,
+                        tag,
+                        oldTagName,
+                        currentTags,
+                        removedTagTextForCleanup);
                     _mediaService.Save(media);
                 }
                 catch (Exception ex)
@@ -518,11 +559,12 @@ namespace Umbraco_Tag_Manager.Controllers
             IEnumerable<IProperty> properties,
             CmsTags tag,
             string oldTagName,
-            List<string> currentTags)
+            List<string> currentTags,
+            string? removedTagTextForCleanup = null)
         {
             foreach (var property in properties)
             {
-                if (!IsTagProperty(property, tag, currentTags))
+                if (!IsTagProperty(property, tag, currentTags, removedTagTextForCleanup))
                     continue;
 
                 SetUpdatedTagValue(property, tag, oldTagName, currentTags);
@@ -539,7 +581,11 @@ namespace Umbraco_Tag_Manager.Controllers
         /// The <paramref name="currentTags"/> list is passed in to avoid a repeated DB call
         /// per property on the same entity.
         /// </summary>
-        private static bool IsTagProperty(IProperty property, CmsTags tag, List<string> currentTags)
+        private static bool IsTagProperty(
+            IProperty property,
+            CmsTags tag,
+            List<string> currentTags,
+            string? removedTagTextForCleanup = null)
         {
             var propertyType = property.PropertyType;
             if (propertyType == null)
@@ -552,7 +598,18 @@ namespace Umbraco_Tag_Manager.Controllers
             if (string.IsNullOrEmpty(editorAlias) || !TagEditorAliases.Contains(editorAlias))
                 return false;
 
-            return currentTags.Count > 0;
+            if (currentTags.Count > 0)
+                return true;
+
+            // After deletion, ITagService may return no tags for this group while the stored value still lists the removed tag.
+            if (!string.IsNullOrEmpty(removedTagTextForCleanup))
+            {
+                var raw = property.GetValue()?.ToString() ?? string.Empty;
+                if (raw.Contains(removedTagTextForCleanup, StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
+
+            return false;
         }
 
         /// <summary>

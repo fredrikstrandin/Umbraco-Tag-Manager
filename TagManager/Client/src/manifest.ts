@@ -99,7 +99,7 @@ export const manifests = [
 		kind: 'default',
 		alias: 'TagManager.TreeItem',
 		name: 'Tag Manager Tree Item',
-		forEntityTypes: ['tagmanager-root', 'tagmanager-group', 'tagmanager-tag'],
+		forEntityTypes: ['tagmanager-root', 'tagmanager-group'],
 	},
 	{
 		type: 'workspace',
