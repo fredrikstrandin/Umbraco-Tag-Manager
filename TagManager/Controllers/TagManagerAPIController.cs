@@ -8,6 +8,7 @@ using NPoco;
 using Umbraco_Tag_Manager.Models;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Scoping;
+using Umbraco.Cms.Core.Serialization;
 using Umbraco.Cms.Core.Services;
 
 namespace Umbraco_Tag_Manager.Controllers
@@ -39,20 +40,22 @@ namespace Umbraco_Tag_Manager.Controllers
         private readonly IMediaService _mediaService;
         private readonly IContentService _contentService;
         private readonly ITagService _tagService;
-
+        private readonly IJsonSerializer _jsonSerializer;
 
         public TagManagerApiController(
             IScopeProvider scopeProvider,
             ILogger<TagManagerApiController> logger,
             IMediaService mediaService,
             IContentService contentService,
-            ITagService tagService)
+            ITagService tagService,
+            IJsonSerializer jsonSerializer)
         {
             _scopeProvider = scopeProvider ?? throw new ArgumentNullException(nameof(scopeProvider));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _mediaService = mediaService ?? throw new ArgumentNullException(nameof(mediaService));
             _contentService = contentService ?? throw new ArgumentNullException(nameof(contentService));
             _tagService = tagService ?? throw new ArgumentNullException(nameof(tagService));
+            _jsonSerializer = jsonSerializer ?? throw new ArgumentNullException(nameof(jsonSerializer));
         }
 
         // -----------------------------------------------------------------------
@@ -110,6 +113,7 @@ namespace Umbraco_Tag_Manager.Controllers
                 return StatusCode(500, "An error occurred while retrieving tag groups.");
             }
         }
+
 
         /// <summary>
         /// Returns all tags within a named group, including relationship counts.
@@ -198,12 +202,10 @@ namespace Umbraco_Tag_Manager.Controllers
                     return NotFound($"Tag with ID {tag.Id} was not found.");
                 }
 
-                // Use database row so group, label, and property type are correct for property sync.
                 tag.Tag = tagRow.Tag;
                 tag.Group = tagRow.Group;
                 tag.PropertyTypeId = tagRow.PropertyTypeId;
 
-                // Resolve affected nodes while cmsTagRelationship rows still exist.
                 tag.TaggedDocuments = GetTaggedDocumentNodeIds(tag.Id);
                 tag.TaggedMedia = GetTaggedMediaNodeIds(tag.Id);
 
@@ -313,21 +315,33 @@ namespace Umbraco_Tag_Manager.Controllers
             {
                 using var scope = _scopeProvider.CreateScope();
 
-                var nodeIds = scope.Database.Fetch<dynamic>(
-                    new Sql().Select("nodeId AS DocumentId").From("cmsTagRelationship")
+                var rows = scope.Database.Fetch<dynamic>(
+                    new Sql().Select("nodeId, propertyTypeId").From("cmsTagRelationship")
                              .Where($"tagID = {tagId}"));
 
-                foreach (var row in nodeIds)
+                var grouped = new Dictionary<int, List<int>>();
+                foreach (var row in rows)
                 {
-                    var content = _contentService.GetById((int)row.DocumentId);
+                    int nodeId = (int)row.nodeId;
+                    int ptId = (int)row.propertyTypeId;
+                    if (!grouped.ContainsKey(nodeId))
+                        grouped[nodeId] = new List<int>();
+                    if (!grouped[nodeId].Contains(ptId))
+                        grouped[nodeId].Add(ptId);
+                }
+
+                foreach (var kv in grouped)
+                {
+                    var content = _contentService.GetById(kv.Key);
                     if (content == null || string.IsNullOrWhiteSpace(content.Name))
                         continue;
 
                     documents.Add(new TaggedDocument
                     {
-                        DocumentId = (int)row.DocumentId,
+                        DocumentId = kv.Key,
                         DocumentName = content.Name,
-                        DocumentUrl = $"/umbraco/section/content/workspace/document/edit/{content.Key}"
+                        DocumentUrl = $"/umbraco/section/content/workspace/document/edit/{content.Key}",
+                        RelationshipPropertyTypeIds = kv.Value,
                     });
                 }
 
@@ -349,21 +363,33 @@ namespace Umbraco_Tag_Manager.Controllers
             {
                 using var scope = _scopeProvider.CreateScope();
 
-                var nodeIds = scope.Database.Fetch<dynamic>(
-                    new Sql().Select("nodeId AS DocumentId").From("cmsTagRelationship")
+                var rows = scope.Database.Fetch<dynamic>(
+                    new Sql().Select("nodeId, propertyTypeId").From("cmsTagRelationship")
                              .Where($"tagID = {tagId}"));
 
-                foreach (var row in nodeIds)
+                var grouped = new Dictionary<int, List<int>>();
+                foreach (var row in rows)
                 {
-                    var media = _mediaService.GetById((int)row.DocumentId);
+                    int nodeId = (int)row.nodeId;
+                    int ptId = (int)row.propertyTypeId;
+                    if (!grouped.ContainsKey(nodeId))
+                        grouped[nodeId] = new List<int>();
+                    if (!grouped[nodeId].Contains(ptId))
+                        grouped[nodeId].Add(ptId);
+                }
+
+                foreach (var kv in grouped)
+                {
+                    var media = _mediaService.GetById(kv.Key);
                     if (media == null || string.IsNullOrWhiteSpace(media.Name))
                         continue;
 
                     mediaItems.Add(new TaggedMedia
                     {
-                        DocumentId = (int)row.DocumentId,
+                        DocumentId = kv.Key,
                         DocumentName = media.Name,
-                        DocumentUrl = $"/umbraco/section/media/workspace/media/edit/{media.Key}"
+                        DocumentUrl = $"/umbraco/section/media/workspace/media/edit/{media.Key}",
+                        RelationshipPropertyTypeIds = kv.Value,
                     });
                 }
 
@@ -436,6 +462,9 @@ namespace Umbraco_Tag_Manager.Controllers
                 && tag.TagsInGroup?.SelectedItem != null
                 && tag.Id != tag.TagsInGroup.SelectedItem.Id;
 
+            tag.TaggedDocuments = GetTaggedDocumentNodeIds(tag.Id);
+            tag.TaggedMedia = GetTaggedMediaNodeIds(tag.Id);
+
             if (isMerging)
             {
                 var targetId = tag.TagsInGroup.SelectedItem.Id;
@@ -484,13 +513,21 @@ namespace Umbraco_Tag_Manager.Controllers
                     if (content == null) continue;
 
                     var currentTags = GetCurrentTagTexts(doc.DocumentId, tag.Group);
-                    ApplyTagUpdatesToProperties(
+                    bool changed = ApplyTagUpdatesToProperties(
                         content.Properties,
                         tag,
                         oldTagName,
                         currentTags,
-                        removedTagTextForCleanup);
-                    _contentService.Save(content);
+                        removedTagTextForCleanup,
+                        doc.RelationshipPropertyTypeIds);
+
+                    if (!changed) continue;
+
+                    var saveResult = _contentService.Save(content);
+                    if (saveResult.Success && content.Published)
+                    {
+                        _contentService.Publish(content, []);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -521,13 +558,26 @@ namespace Umbraco_Tag_Manager.Controllers
                     if (media == null) continue;
 
                     var currentTags = GetCurrentTagTexts(med.DocumentId, tag.Group);
-                    ApplyTagUpdatesToProperties(
+                    bool changed = ApplyTagUpdatesToProperties(
                         media.Properties,
                         tag,
                         oldTagName,
                         currentTags,
-                        removedTagTextForCleanup);
-                    _mediaService.Save(media);
+                        removedTagTextForCleanup,
+                        med.RelationshipPropertyTypeIds);
+
+                    if (!changed) continue;
+
+                    var saveAttempt = _mediaService.Save(media);
+                    if (!saveAttempt.Success || saveAttempt.Result is not { Success: true })
+                    {
+                        _logger.LogWarning(
+                            "Tag sync save failed for media {MediaId} (tag {TagId}). Attempt.Success={AttemptOk}, Result.Success={ResultOk}",
+                            med.DocumentId,
+                            tag.Id,
+                            saveAttempt.Success,
+                            saveAttempt.Result?.Success);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -555,41 +605,55 @@ namespace Umbraco_Tag_Manager.Controllers
         /// Iterates an entity's properties and updates any tag picker properties
         /// that belong to the tag being modified.
         /// </summary>
-        private void ApplyTagUpdatesToProperties(
+        /// <param name="relationshipPropertyTypeIds">
+        /// Property-type IDs from cmsTagRelationship for this entity + tag.
+        /// When non-empty, only properties whose PropertyType.Id is in this set are touched,
+        /// preventing writes to tag properties that belong to a different group.
+        /// </param>
+        /// <returns>True if at least one property was modified.</returns>
+        private bool ApplyTagUpdatesToProperties(
             IEnumerable<IProperty> properties,
             CmsTags tag,
             string oldTagName,
             List<string> currentTags,
-            string? removedTagTextForCleanup = null)
+            string? removedTagTextForCleanup = null,
+            List<int>? relationshipPropertyTypeIds = null)
         {
+            bool modified = false;
             foreach (var property in properties)
             {
-                if (!IsTagProperty(property, tag, currentTags, removedTagTextForCleanup))
+                if (!IsTagProperty(property, tag, currentTags, removedTagTextForCleanup, relationshipPropertyTypeIds))
                     continue;
 
                 SetUpdatedTagValue(property, tag, oldTagName, currentTags);
+                modified = true;
             }
+            return modified;
         }
+
 
         /// <summary>
         /// Determines whether a property should be updated.
         ///
         /// A property qualifies if:
-        ///   1. Its PropertyType.Id matches the tag's stored PropertyTypeId (most precise), OR
-        ///   2. Its editor alias is a known tag editor AND the entity has tags in the relevant group.
-        ///
-        /// The <paramref name="currentTags"/> list is passed in to avoid a repeated DB call
-        /// per property on the same entity.
+        ///   1. The relationship carried a propertyTypeId list and this property is in it (most precise), OR
+        ///   2. Its PropertyType.Id matches the tag row's PropertyTypeId, OR
+        ///   3. (Fallback only when no relationship IDs are available) its editor alias is a known tag editor
+        ///      AND the entity has tags in the relevant group.
         /// </summary>
         private static bool IsTagProperty(
             IProperty property,
             CmsTags tag,
             List<string> currentTags,
-            string? removedTagTextForCleanup = null)
+            string? removedTagTextForCleanup = null,
+            List<int>? relationshipPropertyTypeIds = null)
         {
             var propertyType = property.PropertyType;
             if (propertyType == null)
                 return false;
+
+            if (relationshipPropertyTypeIds != null && relationshipPropertyTypeIds.Count > 0)
+                return relationshipPropertyTypeIds.Contains(propertyType.Id);
 
             if (tag.PropertyTypeId > 0 && propertyType.Id == tag.PropertyTypeId)
                 return true;
@@ -601,7 +665,6 @@ namespace Umbraco_Tag_Manager.Controllers
             if (currentTags.Count > 0)
                 return true;
 
-            // After deletion, ITagService may return no tags for this group while the stored value still lists the removed tag.
             if (!string.IsNullOrEmpty(removedTagTextForCleanup))
             {
                 var raw = property.GetValue()?.ToString() ?? string.Empty;
@@ -621,7 +684,7 @@ namespace Umbraco_Tag_Manager.Controllers
         ///   - Otherwise fall back to writing the full current tag list from the database,
         ///     which is the authoritative source of truth.
         /// </summary>
-        private static void SetUpdatedTagValue(
+        private void SetUpdatedTagValue(
             IProperty property,
             CmsTags tag,
             string oldTagName,
@@ -639,7 +702,9 @@ namespace Umbraco_Tag_Manager.Controllers
             }
             else
             {
-                property.SetValue(currentTags.Any() ? string.Join(",", currentTags) : string.Empty);
+                // Tags / TagsPicker store JSON arrays; CSV corrupts the value and clears tags in the UI.
+                property.SetValue(
+                    currentTags.Count > 0 ? _jsonSerializer.Serialize(currentTags) : string.Empty);
             }
         }
     }

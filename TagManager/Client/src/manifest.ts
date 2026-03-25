@@ -103,9 +103,10 @@ export const manifests = [
 	},
 	{
 		type: 'workspace',
-		kind: 'default',
+		kind: 'routable',
 		alias: 'TagManager.GroupWorkspace',
 		name: 'Tag Group Workspace',
+		api: () => import('./workspace/tag-group-workspace.context.js'),
 		meta: {
 			entityType: 'tagmanager-group',
 		},

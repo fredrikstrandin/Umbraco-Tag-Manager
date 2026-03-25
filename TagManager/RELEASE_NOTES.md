@@ -1,5 +1,21 @@
 # TagManager release notes
 
+## 17.0.6
+
+### API / server
+
+- **Delete / sync tag properties**: When rewriting a tag property from the database tag list (fallback path), values are now written with **`IJsonSerializer`** as a JSON array. Comma-separated text was invalid for Umbraco **Tags** / **TagsPicker** storage and could make **all tags disappear** on the node after deleting one tag (thanks [@fredrikstrandin](https://github.com/fredrikstrandin)).
+- After updating content, **published** nodes are **republished** so the live site reflects tag removals without a manual publish.
+- **Cross-group contamination fix**: Property updates after delete/rename now use the **`propertyTypeId`** from `cmsTagRelationship` to target only the exact property that held the tag. Previously, all tag-editor properties on a node were matched by editor alias, so deleting a tag from one group could write that group's remaining tags into a different group's property — creating duplicates in the wrong group.
+- **Save-only-when-changed guard**: `_contentService.Save` / `Publish` and `_mediaService.Save` are now **skipped entirely** when no property was actually modified. This prevents Umbraco's internal tag sync from re-processing unrelated tag properties during save and recreating duplicate `cmsTags` rows in other groups.
+
+### Backoffice (client)
+
+- **Tag group workspace** is now a **routable** workspace (`edit/:unique`) with a small workspace context, so the **sidebar tree selection stays in sync** with the open group and switching groups reliably reloads the grid.
+- **Group tag list** clears immediately when changing groups, responses are de-duplicated by request id, and tags are **filtered client-side** to the current group so a wrong or stale API row cannot flash in another group’s view.
+
+---
+
 ## 17.0.5
 
 ### Backoffice (client)

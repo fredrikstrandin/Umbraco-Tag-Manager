@@ -2,16 +2,21 @@ import { LitElement, html, css } from '@umbraco-cms/backoffice/external/lit';
 import { customElement, state } from '@umbraco-cms/backoffice/external/lit';
 import { UmbElementMixin } from '@umbraco-cms/backoffice/element-api';
 import { UMB_MODAL_MANAGER_CONTEXT } from '@umbraco-cms/backoffice/modal';
+import { UMB_WORKSPACE_CONTEXT } from '@umbraco-cms/backoffice/workspace';
 import { TAG_CREATE_MODAL_TOKEN } from '../modal/tag-create-modal.token.js';
 import { TagManagerRepository } from '../api/tagmanager-repository.js';
 import type { CmsTag } from '../api/types.js';
 
+type WorkspaceWithUnique = {
+	unique?: import('@umbraco-cms/backoffice/observable-api').Observable<string | null>;
+};
+
 @customElement('tagmanager-group-view')
 export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
 	private _repository: TagManagerRepository;
-	private _locationPoller: number | null = null;
-	private _lastPathname = '';
 	private _loadRequestId = 0;
+	private _pathnamePoller: number | null = null;
+	private _lastPathname = '';
 
 	@state()
 	private _tags: CmsTag[] = [];
@@ -27,42 +32,51 @@ export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
 		this._repository = new TagManagerRepository(this);
 	}
 
-	async connectedCallback() {
+	override async connectedCallback() {
 		super.connectedCallback();
 
-		this._lastPathname = window.location.pathname;
-		await this._syncFromLocation(this._lastPathname);
+		this.consumeContext(UMB_WORKSPACE_CONTEXT, (workspaceCtx) => {
+			const unique$ = (workspaceCtx as unknown as WorkspaceWithUnique)?.unique;
+			if (unique$) {
+				this.observe(unique$, (unique: string | null) => {
+					void this._syncFromWorkspaceUnique(unique);
+				});
+				return;
+			}
+			this._startPathnameFallback();
+		});
 
-		// Umbraco routing can update the URL without re-creating this view element.
-		// Poll for pathname changes so switching between tag groups always reloads.
-		this._locationPoller = window.setInterval(() => {
+		// Fallback if workspace context has no `unique` (should not happen with routable workspace).
+		this._lastPathname = window.location.pathname;
+		void this._syncFromPathname(this._lastPathname);
+	}
+
+	override disconnectedCallback() {
+		if (this._pathnamePoller !== null) {
+			window.clearInterval(this._pathnamePoller);
+			this._pathnamePoller = null;
+		}
+		super.disconnectedCallback();
+	}
+
+	private _startPathnameFallback() {
+		if (this._pathnamePoller !== null) return;
+		this._pathnamePoller = window.setInterval(() => {
 			const current = window.location.pathname;
 			if (current !== this._lastPathname) {
 				this._lastPathname = current;
-				void this._syncFromLocation(current);
+				void this._syncFromPathname(current);
 			}
 		}, 200);
 	}
 
-	disconnectedCallback() {
-		if (this._locationPoller !== null) {
-			window.clearInterval(this._locationPoller);
-			this._locationPoller = null;
-		}
-
-		super.disconnectedCallback();
-	}
-
 	private _getGroupNameFromPath(pathname: string): string | null {
-		// Expected patterns:
-		// - /umbraco/section/tagmanager/workspace/tagmanager-group/edit/<groupName>/view/tags
-		// - /umbraco/section/tagmanager/workspace/tagmanager-group/<groupName>/view/tags
-		const match = pathname.match(/\/tagmanager-group\/(?:edit\/)?([^\/]+)/);
+		const match = pathname.match(/\/tagmanager-group\/(?:edit\/)?([^/]+)/);
 		if (!match?.[1]) return null;
 		return decodeURIComponent(match[1]);
 	}
 
-	private async _syncFromLocation(pathname: string) {
+	private async _syncFromPathname(pathname: string) {
 		const groupName = this._getGroupNameFromPath(pathname);
 		if (!groupName) {
 			this._groupName = '';
@@ -71,12 +85,26 @@ export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
 			this.requestUpdate();
 			return;
 		}
-
-		// Reload whenever the route group changes (do not require existing tags — empty groups must still switch).
 		if (groupName === this._groupName) return;
-
 		this._groupName = groupName;
 		await this._loadTags(groupName);
+	}
+
+	private async _syncFromWorkspaceUnique(unique: string | null) {
+		if (unique == null || unique === '') {
+			this._groupName = '';
+			this._tags = [];
+			this._loading = false;
+			this.requestUpdate();
+			return;
+		}
+		if (unique === this._groupName) return;
+
+		this._groupName = unique;
+		this._tags = [];
+		this._loading = true;
+		this.requestUpdate();
+		await this._loadTags(unique);
 	}
 
 	private async _loadTags(groupName: string) {
@@ -88,8 +116,9 @@ export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
 		try {
 			const tags = await this._repository.getTagsInGroup(groupName);
 			if (requestId !== this._loadRequestId) return;
-			this._tags = tags;
-		} catch (error) {
+			const g = groupName.trim();
+			this._tags = tags.filter((t) => (t.group || t.Group || '').trim() === g);
+		} catch {
 		} finally {
 			if (requestId === this._loadRequestId) {
 				this._loading = false;
@@ -117,16 +146,16 @@ export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
 		try {
 			const result = await modalContext.onSubmit();
 			if (result) {
-				await new Promise(resolve => setTimeout(resolve, 500));
+				await new Promise((resolve) => setTimeout(resolve, 500));
 				if (this._groupName) {
 					await this._loadTags(this._groupName);
 				}
 			}
-		} catch (error) {
+		} catch {
 		}
 	}
 
-	render() {
+	override render() {
 		if (this._loading) {
 			return html`
 				<div class="loading-container">
@@ -147,10 +176,7 @@ export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
 								<uui-icon name="icon-folder"></uui-icon>
 								<h2>Tag Manager</h2>
 							</div>
-							<uui-button
-								look="primary"
-								label="Create Tag"
-								@click=${this._createTag}>
+							<uui-button look="primary" label="Create Tag" @click=${this._createTag}>
 								<uui-icon name="icon-add"></uui-icon>
 								Create Tag
 							</uui-button>
@@ -197,29 +223,31 @@ export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
 					: html`
 							<uui-box headline="All Tags">
 								<div class="tag-grid">
-									${this._tags.map((tag) => html`
-										<uui-card-content-node
-											name="${tag.tag || tag.Tag || ''}"
-											@click=${() => this._handleEditTag(tag)}>
-											<uui-icon slot="icon" name="icon-tag"></uui-icon>
-											<div slot="info">
-												<div class="tag-info">
-													<uui-icon name="icon-files"></uui-icon>
-													${tag.noTaggedNodes || tag.NoTaggedNodes || 0} uses
+									${this._tags.map(
+										(tag) => html`
+											<uui-card-content-node
+												name="${tag.tag || tag.Tag || ''}"
+												@click=${() => this._handleEditTag(tag)}>
+												<uui-icon slot="icon" name="icon-tag"></uui-icon>
+												<div slot="info">
+													<div class="tag-info">
+														<uui-icon name="icon-files"></uui-icon>
+														${tag.noTaggedNodes || tag.NoTaggedNodes || 0} uses
+													</div>
 												</div>
-											</div>
-											<uui-action-bar slot="actions">
-												<uui-button
-													label="Edit"
-													@click=${(e: Event) => {
-														e.stopPropagation();
-														this._handleEditTag(tag);
-													}}>
-													<uui-icon name="icon-edit"></uui-icon>
-												</uui-button>
-											</uui-action-bar>
-										</uui-card-content-node>
-									`)}
+												<uui-action-bar slot="actions">
+													<uui-button
+														label="Edit"
+														@click=${(e: Event) => {
+															e.stopPropagation();
+															this._handleEditTag(tag);
+														}}>
+														<uui-icon name="icon-edit"></uui-icon>
+													</uui-button>
+												</uui-action-bar>
+											</uui-card-content-node>
+										`,
+									)}
 								</div>
 							</uui-box>
 					  `}
@@ -400,4 +428,3 @@ export class TagManagerGroupViewElement extends UmbElementMixin(LitElement) {
 }
 
 export default TagManagerGroupViewElement;
-

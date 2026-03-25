@@ -373,24 +373,6 @@ export class TagEditViewElement extends UmbElementMixin(LitElement) {
 										</div>
 									</uui-box>
 							  `}
-
-						${this._tag.taggedMedia && this._tag.taggedMedia.length > 0
-							? html`
-									<uui-box headline="Tagged Media (${this._tag.taggedMedia.length})">
-										<div class="content-list">
-											${this._tag.taggedMedia.map(
-												(media) => html`
-													<uui-ref-node
-														name="${media.documentName || media.DocumentName}"
-														href="${media.documentUrl || media.DocumentUrl}">
-														<uui-icon slot="icon" name="icon-picture"></uui-icon>
-													</uui-ref-node>
-												`
-											)}
-										</div>
-									</uui-box>
-							  `
-							: ''}
 					</div>
 				</div>
 			</div>

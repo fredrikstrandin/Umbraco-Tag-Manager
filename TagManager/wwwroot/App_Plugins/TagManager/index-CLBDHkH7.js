@@ -81,7 +81,7 @@ const g = new r(
     type: "repository",
     alias: e,
     name: "Tag Manager Tree Repository",
-    api: () => import("./tagmanager-tree.repository-CHraVn-p.js")
+    api: () => import("./tagmanager-tree.repository-DuGU7U8J.js")
   },
   {
     type: "treeStore",
@@ -107,9 +107,10 @@ const g = new r(
   },
   {
     type: "workspace",
-    kind: "default",
+    kind: "routable",
     alias: "TagManager.GroupWorkspace",
     name: "Tag Group Workspace",
+    api: () => import("./tag-group-workspace.context-VYCkSSTI.js"),
     meta: {
       entityType: "tagmanager-group"
     }
@@ -118,7 +119,7 @@ const g = new r(
     type: "workspaceView",
     alias: "TagManager.GroupWorkspace.Tags",
     name: "Tag Group Tags View",
-    element: () => import("./tag-group-workspace.element-BX_j9Apz.js"),
+    element: () => import("./tag-group-workspace.element-D6J4ta08.js"),
     weight: 1e3,
     meta: {
       label: "Tags",
@@ -146,7 +147,7 @@ const g = new r(
     type: "workspaceView",
     alias: "TagManager.TagWorkspace.Edit",
     name: "Tag Edit Workspace View",
-    element: () => import("./tag-edit-view.element-DRyRiqvs.js"),
+    element: () => import("./tag-edit-view.element-Bcp9NRRn.js"),
     weight: 300,
     meta: {
       label: "Edit",
@@ -173,4 +174,4 @@ export {
   g as U,
   p as o
 };
-//# sourceMappingURL=index-B1KCttKr.js.map
+//# sourceMappingURL=index-CLBDHkH7.js.map

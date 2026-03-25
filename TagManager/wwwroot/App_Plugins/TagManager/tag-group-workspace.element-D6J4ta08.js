@@ -1,11 +1,12 @@
 var g = Object.defineProperty;
-var h = (e, a, t) => a in e ? g(e, a, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[a] = t;
-var s = (e, a, t) => h(e, typeof a != "symbol" ? a + "" : a, t);
-import { LitElement as v, html as n, css as m, state as d, customElement as f } from "@umbraco-cms/backoffice/external/lit";
+var h = (e, t, a) => t in e ? g(e, t, { enumerable: !0, configurable: !0, writable: !0, value: a }) : e[t] = a;
+var o = (e, t, a) => h(e, typeof t != "symbol" ? t + "" : t, a);
+import { LitElement as m, html as l, css as v, state as d, customElement as f } from "@umbraco-cms/backoffice/external/lit";
 import { UmbElementMixin as _ } from "@umbraco-cms/backoffice/element-api";
-import { UmbModalToken as x, UMB_MODAL_MANAGER_CONTEXT as b } from "@umbraco-cms/backoffice/modal";
-import { T as w } from "./tagmanager-repository-BvW2JE0F.js";
-const y = new x(
+import { UmbModalToken as b, UMB_MODAL_MANAGER_CONTEXT as x } from "@umbraco-cms/backoffice/modal";
+import { UMB_WORKSPACE_CONTEXT as y } from "@umbraco-cms/backoffice/workspace";
+import { T } from "./tagmanager-repository-BvW2JE0F.js";
+const w = new b(
   "TagManager.Modal.CreateTag",
   {
     modal: {
@@ -14,83 +15,103 @@ const y = new x(
     }
   }
 );
-var p = Object.defineProperty, T = Object.getOwnPropertyDescriptor, z = (e, a, t) => a in e ? p(e, a, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[a] = t, l = (e, a, t, i) => {
-  for (var o = i > 1 ? void 0 : i ? T(a, t) : a, c = e.length - 1, u; c >= 0; c--)
-    (u = e[c]) && (o = (i ? u(a, t, o) : u(o)) || o);
-  return i && o && p(a, t, o), o;
-}, N = (e, a, t) => z(e, a + "", t);
-let r = class extends _(v) {
+var p = Object.defineProperty, P = Object.getOwnPropertyDescriptor, z = (e, t, a) => t in e ? p(e, t, { enumerable: !0, configurable: !0, writable: !0, value: a }) : e[t] = a, u = (e, t, a, i) => {
+  for (var s = i > 1 ? void 0 : i ? P(t, a) : t, n = e.length - 1, c; n >= 0; n--)
+    (c = e[n]) && (s = (i ? c(t, a, s) : c(s)) || s);
+  return i && s && p(t, a, s), s;
+}, N = (e, t, a) => z(e, t + "", a);
+let r = class extends _(m) {
   constructor() {
     super();
-    s(this, "_repository");
-    s(this, "_locationPoller", null);
-    s(this, "_lastPathname", "");
-    s(this, "_loadRequestId", 0);
-    s(this, "_tags", []);
-    s(this, "_loading", !1);
-    s(this, "_groupName", "");
-    this._repository = new w(this);
+    o(this, "_repository");
+    o(this, "_loadRequestId", 0);
+    o(this, "_pathnamePoller", null);
+    o(this, "_lastPathname", "");
+    o(this, "_tags", []);
+    o(this, "_loading", !1);
+    o(this, "_groupName", "");
+    this._repository = new T(this);
   }
   async connectedCallback() {
-    super.connectedCallback(), this._lastPathname = window.location.pathname, await this._syncFromLocation(this._lastPathname), this._locationPoller = window.setInterval(() => {
-      const a = window.location.pathname;
-      a !== this._lastPathname && (this._lastPathname = a, this._syncFromLocation(a));
-    }, 200);
+    super.connectedCallback(), this.consumeContext(y, (t) => {
+      const a = t == null ? void 0 : t.unique;
+      if (a) {
+        this.observe(a, (i) => {
+          this._syncFromWorkspaceUnique(i);
+        });
+        return;
+      }
+      this._startPathnameFallback();
+    }), this._lastPathname = window.location.pathname, this._syncFromPathname(this._lastPathname);
   }
   disconnectedCallback() {
-    this._locationPoller !== null && (window.clearInterval(this._locationPoller), this._locationPoller = null), super.disconnectedCallback();
+    this._pathnamePoller !== null && (window.clearInterval(this._pathnamePoller), this._pathnamePoller = null), super.disconnectedCallback();
   }
-  _getGroupNameFromPath(a) {
-    const t = a.match(/\/tagmanager-group\/(?:edit\/)?([^\/]+)/);
-    return t != null && t[1] ? decodeURIComponent(t[1]) : null;
+  _startPathnameFallback() {
+    this._pathnamePoller === null && (this._pathnamePoller = window.setInterval(() => {
+      const t = window.location.pathname;
+      t !== this._lastPathname && (this._lastPathname = t, this._syncFromPathname(t));
+    }, 200));
   }
-  async _syncFromLocation(a) {
-    const t = this._getGroupNameFromPath(a);
-    if (!t) {
+  _getGroupNameFromPath(t) {
+    const a = t.match(/\/tagmanager-group\/(?:edit\/)?([^/]+)/);
+    return a != null && a[1] ? decodeURIComponent(a[1]) : null;
+  }
+  async _syncFromPathname(t) {
+    const a = this._getGroupNameFromPath(t);
+    if (!a) {
       this._groupName = "", this._tags = [], this._loading = !1, this.requestUpdate();
       return;
     }
-    t !== this._groupName && (this._groupName = t, await this._loadTags(t));
+    a !== this._groupName && (this._groupName = a, await this._loadTags(a));
   }
-  async _loadTags(a) {
-    const t = ++this._loadRequestId;
+  async _syncFromWorkspaceUnique(t) {
+    if (t == null || t === "") {
+      this._groupName = "", this._tags = [], this._loading = !1, this.requestUpdate();
+      return;
+    }
+    t !== this._groupName && (this._groupName = t, this._tags = [], this._loading = !0, this.requestUpdate(), await this._loadTags(t));
+  }
+  async _loadTags(t) {
+    const a = ++this._loadRequestId;
     this._loading = !0, this.requestUpdate();
     try {
-      const i = await this._repository.getTagsInGroup(a);
-      if (t !== this._loadRequestId) return;
-      this._tags = i;
+      const i = await this._repository.getTagsInGroup(t);
+      if (a !== this._loadRequestId) return;
+      const s = t.trim();
+      this._tags = i.filter((n) => (n.group || n.Group || "").trim() === s);
     } catch {
     } finally {
-      t === this._loadRequestId && (this._loading = !1, this.requestUpdate());
+      a === this._loadRequestId && (this._loading = !1, this.requestUpdate());
     }
   }
-  _handleEditTag(a) {
-    const t = `/umbraco/section/tagmanager/workspace/tagmanager-tag/edit/${a.id}`;
-    history.pushState(null, "", t), window.dispatchEvent(new PopStateEvent("popstate"));
+  _handleEditTag(t) {
+    const a = `/umbraco/section/tagmanager/workspace/tagmanager-tag/edit/${t.id}`;
+    history.pushState(null, "", a), window.dispatchEvent(new PopStateEvent("popstate"));
   }
   async _createTag() {
-    const a = await this.getContext(b);
-    if (!a) return;
-    const t = a.open(this, y, {
+    const t = await this.getContext(x);
+    if (!t) return;
+    const a = t.open(this, w, {
       data: {
         groupName: this._groupName
       }
     });
     try {
-      await t.onSubmit() && (await new Promise((o) => setTimeout(o, 500)), this._groupName && await this._loadTags(this._groupName));
+      await a.onSubmit() && (await new Promise((s) => setTimeout(s, 500)), this._groupName && await this._loadTags(this._groupName));
     } catch {
     }
   }
   render() {
     if (this._loading)
-      return n`
+      return l`
 				<div class="loading-container">
 					<uui-loader></uui-loader>
 					<p>Loading tags...</p>
 				</div>
 			`;
-    const a = this._tags.reduce((t, i) => t + (i.noTaggedNodes || i.NoTaggedNodes || 0), 0);
-    return n`
+    const t = this._tags.reduce((a, i) => a + (i.noTaggedNodes || i.NoTaggedNodes || 0), 0);
+    return l`
 			<div class="tag-container">
 				<uui-box class="header-box">
 					<div class="header-content">
@@ -99,10 +120,7 @@ let r = class extends _(v) {
 								<uui-icon name="icon-folder"></uui-icon>
 								<h2>Tag Manager</h2>
 							</div>
-							<uui-button
-								look="primary"
-								label="Create Tag"
-								@click=${this._createTag}>
+							<uui-button look="primary" label="Create Tag" @click=${this._createTag}>
 								<uui-icon name="icon-add"></uui-icon>
 								Create Tag
 							</uui-button>
@@ -122,7 +140,7 @@ let r = class extends _(v) {
 									<uui-icon name="icon-files"></uui-icon>
 								</div>
 								<div class="stat-content">
-									<div class="stat-value">${a}</div>
+									<div class="stat-value">${t}</div>
 									<div class="stat-label">Total Uses</div>
 								</div>
 							</div>
@@ -131,7 +149,7 @@ let r = class extends _(v) {
 									<uui-icon name="icon-chart"></uui-icon>
 								</div>
 								<div class="stat-content">
-									<div class="stat-value">${this._tags.length > 0 ? Math.round(a / this._tags.length) : 0}</div>
+									<div class="stat-value">${this._tags.length > 0 ? Math.round(t / this._tags.length) : 0}</div>
 									<div class="stat-label">Avg per Tag</div>
 								</div>
 							</div>
@@ -139,36 +157,38 @@ let r = class extends _(v) {
 					</div>
 				</uui-box>
 
-				${this._tags.length === 0 ? n`
+				${this._tags.length === 0 ? l`
 							<div class="empty-state">
 								<uui-icon name="icon-tag"></uui-icon>
 								<p>No tags in this group</p>
 							</div>
-					  ` : n`
+					  ` : l`
 							<uui-box headline="All Tags">
 								<div class="tag-grid">
-									${this._tags.map((t) => n`
-										<uui-card-content-node
-											name="${t.tag || t.Tag || ""}"
-											@click=${() => this._handleEditTag(t)}>
-											<uui-icon slot="icon" name="icon-tag"></uui-icon>
-											<div slot="info">
-												<div class="tag-info">
-													<uui-icon name="icon-files"></uui-icon>
-													${t.noTaggedNodes || t.NoTaggedNodes || 0} uses
+									${this._tags.map(
+      (a) => l`
+											<uui-card-content-node
+												name="${a.tag || a.Tag || ""}"
+												@click=${() => this._handleEditTag(a)}>
+												<uui-icon slot="icon" name="icon-tag"></uui-icon>
+												<div slot="info">
+													<div class="tag-info">
+														<uui-icon name="icon-files"></uui-icon>
+														${a.noTaggedNodes || a.NoTaggedNodes || 0} uses
+													</div>
 												</div>
-											</div>
-											<uui-action-bar slot="actions">
-												<uui-button
-													label="Edit"
-													@click=${(i) => {
-      i.stopPropagation(), this._handleEditTag(t);
-    }}>
-													<uui-icon name="icon-edit"></uui-icon>
-												</uui-button>
-											</uui-action-bar>
-										</uui-card-content-node>
-									`)}
+												<uui-action-bar slot="actions">
+													<uui-button
+														label="Edit"
+														@click=${(i) => {
+        i.stopPropagation(), this._handleEditTag(a);
+      }}>
+														<uui-icon name="icon-edit"></uui-icon>
+													</uui-button>
+												</uui-action-bar>
+											</uui-card-content-node>
+										`
+    )}
 								</div>
 							</uui-box>
 					  `}
@@ -176,7 +196,7 @@ let r = class extends _(v) {
 		`;
   }
 };
-N(r, "styles", m`
+N(r, "styles", v`
 		:host {
 			display: block;
 			padding: var(--uui-size-space-6);
@@ -346,21 +366,21 @@ N(r, "styles", m`
 			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 		}
 	`);
-l([
+u([
   d()
 ], r.prototype, "_tags", 2);
-l([
+u([
   d()
 ], r.prototype, "_loading", 2);
-l([
+u([
   d()
 ], r.prototype, "_groupName", 2);
-r = l([
+r = u([
   f("tagmanager-group-view")
 ], r);
-const I = r;
+const F = r;
 export {
   r as TagManagerGroupViewElement,
-  I as default
+  F as default
 };
-//# sourceMappingURL=tag-group-workspace.element-BX_j9Apz.js.map
+//# sourceMappingURL=tag-group-workspace.element-D6J4ta08.js.map

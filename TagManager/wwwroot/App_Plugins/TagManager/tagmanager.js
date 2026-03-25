@@ -1,4 +1,4 @@
-import { o as r } from "./index-B1KCttKr.js";
+import { o as r } from "./index-CLBDHkH7.js";
 export {
   r as onInit
 };

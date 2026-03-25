@@ -1,7 +1,7 @@
 var m = Object.defineProperty;
 var p = (o, t, e) => t in o ? m(o, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : o[t] = e;
-var r = (o, t, e) => p(o, typeof t != "symbol" ? t + "" : t, e);
-import { LitElement as _, html as n, css as v, state as g, customElement as f } from "@umbraco-cms/backoffice/external/lit";
+var n = (o, t, e) => p(o, typeof t != "symbol" ? t + "" : t, e);
+import { LitElement as _, html as r, css as v, state as g, customElement as f } from "@umbraco-cms/backoffice/external/lit";
 import { UmbElementMixin as b } from "@umbraco-cms/backoffice/element-api";
 import { UMB_NOTIFICATION_CONTEXT as u } from "@umbraco-cms/backoffice/notification";
 import { UMB_MODAL_MANAGER_CONTEXT as y, UMB_CONFIRM_MODAL as x } from "@umbraco-cms/backoffice/modal";
@@ -10,18 +10,18 @@ var h = Object.defineProperty, I = Object.getOwnPropertyDescriptor, w = (o, t, e
   for (var s = i > 1 ? void 0 : i ? I(t, e) : t, a = o.length - 1, c; a >= 0; a--)
     (c = o[a]) && (s = (i ? c(t, e, s) : c(s)) || s);
   return i && s && h(t, e, s), s;
-}, $ = (o, t, e) => w(o, t + "", e);
+}, N = (o, t, e) => w(o, t + "", e);
 let l = class extends b(_) {
   constructor() {
     super();
-    r(this, "_repository");
-    r(this, "_locationPoller", null);
-    r(this, "_lastPathname", "");
-    r(this, "_loadRequestId", 0);
-    r(this, "_tag", null);
-    r(this, "_loading", !0);
-    r(this, "_saving", !1);
-    r(this, "_tagId");
+    n(this, "_repository");
+    n(this, "_locationPoller", null);
+    n(this, "_lastPathname", "");
+    n(this, "_loadRequestId", 0);
+    n(this, "_tag", null);
+    n(this, "_loading", !0);
+    n(this, "_saving", !1);
+    n(this, "_tagId");
     this._repository = new T(this);
   }
   async connectedCallback() {
@@ -181,7 +181,7 @@ let l = class extends b(_) {
     });
   }
   render() {
-    return this._loading ? n`<div class="loader-container"><uui-loader></uui-loader></div>` : this._tag ? n`
+    return this._loading ? r`<div class="loader-container"><uui-loader></uui-loader></div>` : this._tag ? r`
 			<div class="tag-editor">
 				<uui-box class="editor-header-box">
 					<div class="editor-header">
@@ -214,7 +214,7 @@ let l = class extends b(_) {
 								color="positive"
 								@click=${this._save}
 								?disabled=${this._saving}>
-								${this._saving ? n`<uui-loader></uui-loader>` : n`<uui-icon name="icon-save"></uui-icon>`}
+								${this._saving ? r`<uui-loader></uui-loader>` : r`<uui-icon name="icon-save"></uui-icon>`}
 								Save
 							</uui-button>
 						</div>
@@ -239,7 +239,7 @@ let l = class extends b(_) {
 								${this._tag.tagsInGroup && this._tag.tagsInGroup.options && this._tag.tagsInGroup.options.length > 1 ? (() => {
       var e, i;
       const t = ((i = (e = this._tag.tagsInGroup) == null ? void 0 : e.selectedItem) == null ? void 0 : i.id) ?? 0;
-      return n`
+      return r`
 											<uui-form-layout-item>
 												<uui-label slot="label" for="mergeTag">Merge with Tag</uui-label>
 												<select
@@ -249,7 +249,7 @@ let l = class extends b(_) {
 													@change=${this._onMergeTagChange}
 													?disabled=${this._saving}>
 													${this._tag.tagsInGroup.options.map(
-        (s) => n`
+        (s) => r`
 															<option 
 																value="${s.id}"
 																?selected=${s.id === t}>
@@ -269,11 +269,11 @@ let l = class extends b(_) {
 					</div>
 
 					<div class="right-column">
-						${this._tag.taggedDocuments && this._tag.taggedDocuments.length > 0 ? n`
+						${this._tag.taggedDocuments && this._tag.taggedDocuments.length > 0 ? r`
 									<uui-box headline="Tagged Content (${this._tag.taggedDocuments.length})">
 										<div class="content-list">
 											${this._tag.taggedDocuments.map(
-      (t) => n`
+      (t) => r`
 													<uui-ref-node
 														name="${t.documentName || t.DocumentName}"
 														href="${t.documentUrl || t.DocumentUrl}">
@@ -283,7 +283,7 @@ let l = class extends b(_) {
     )}
 										</div>
 									</uui-box>
-							  ` : n`
+							  ` : r`
 									<uui-box headline="Tagged Content">
 										<div class="empty-state">
 											<uui-icon name="icon-document"></uui-icon>
@@ -291,29 +291,13 @@ let l = class extends b(_) {
 										</div>
 									</uui-box>
 							  `}
-
-						${this._tag.taggedMedia && this._tag.taggedMedia.length > 0 ? n`
-									<uui-box headline="Tagged Media (${this._tag.taggedMedia.length})">
-										<div class="content-list">
-											${this._tag.taggedMedia.map(
-      (t) => n`
-													<uui-ref-node
-														name="${t.documentName || t.DocumentName}"
-														href="${t.documentUrl || t.DocumentUrl}">
-														<uui-icon slot="icon" name="icon-picture"></uui-icon>
-													</uui-ref-node>
-												`
-    )}
-										</div>
-									</uui-box>
-							  ` : ""}
 					</div>
 				</div>
 			</div>
-		` : n`<p>Tag not found</p>`;
+		` : r`<p>Tag not found</p>`;
   }
 };
-$(l, "styles", v`
+N(l, "styles", v`
 		:host {
 			display: block;
 			height: 100%;
@@ -495,4 +479,4 @@ export {
   l as TagEditViewElement,
   k as default
 };
-//# sourceMappingURL=tag-edit-view.element-DRyRiqvs.js.map
+//# sourceMappingURL=tag-edit-view.element-Bcp9NRRn.js.map
